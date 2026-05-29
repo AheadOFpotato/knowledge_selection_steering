@@ -1,0 +1,2685 @@
+{
+  "relation_id": "P264",
+  "count": 47,
+  "records": [
+    {
+      "case_id": 798,
+      "pararel_idx": 489,
+      "requested_rewrite": {
+        "prompt": "{} label :",
+        "relation_id": "P264",
+        "subject": "Lifemask",
+        "target_new": {
+          "id": "Q1973145",
+          "str": "Federal"
+        },
+        "target_true": {
+          "id": "Q1324712",
+          "str": "Harvest"
+        }
+      },
+      "paraphrase_prompts": [
+        "Jacques Layani: Écrivains contemporains. Lifemask is represented by music label",
+        "References\n\nCategory:Municipalities of Oaxaca\nCategory:Populated places in Oaxaca Lifemask's record label is"
+      ],
+      "neighborhood_prompts": [
+        "Eberhard Schoener is represented by music label",
+        "Animals, released by",
+        "Meddle is represented by",
+        "Pink Floyd is represented by",
+        "The Wall's label is",
+        "Breathe's music label is",
+        "The Wall recorded for",
+        "Animals's label is",
+        "Kate Bush is represented by record label",
+        "Syd Barrett's music label is"
+      ],
+      "attribute_prompts": [
+        "The Midnighters's record company is",
+        "The music label that is representing Christine Kittrell is",
+        "Jackie Wilson label :",
+        "Annisteen Allen is represented by",
+        "Billy Davis, which is represented by",
+        "Marian McPartland's record label is",
+        "Annisteen Allen is represented by record label",
+        "Jackie Wilson is represented by",
+        "Marian McPartland recorded for",
+        "Marian McPartland, released by"
+      ],
+      "generation_prompts": [
+        "Lifemask's music is owned by",
+        "Lifemask's music is owned by",
+        "Lifemask's music is owned by",
+        "The company that owns and sells Lifemask's music is",
+        "Lifemask recently entered an agreement with the record label",
+        "Lifemask recently entered an agreement with the record label",
+        "The company that owns and sells Lifemask's music is",
+        "The company that owns and sells Lifemask's music is",
+        "Lifemask's music is owned by",
+        "Lifemask's music is owned by"
+      ]
+    },
+    {
+      "case_id": 1000,
+      "pararel_idx": 537,
+      "requested_rewrite": {
+        "prompt": "{}'s music label is",
+        "relation_id": "P264",
+        "subject": "Purple Hearts",
+        "target_new": {
+          "id": "Q1131870",
+          "str": "Coral"
+        },
+        "target_true": {
+          "id": "Q794555",
+          "str": "Sunshine"
+        }
+      },
+      "paraphrase_prompts": [
+        "Few guides are available at the entrance of the fort. Purple Hearts's label is",
+        "Play was created for the Paris Opera Ballet. Purple Hearts, released by"
+      ],
+      "neighborhood_prompts": [
+        "Far beyond the call of duty, released by",
+        "Mike Furber is represented by",
+        "Que Sera, Sera, which is represented by",
+        "Mike Furber's label is",
+        "Que Sera, Sera label :",
+        "Que Sera, Sera's record company is",
+        "Mike Furber is represented by music label",
+        "The music label that is representing Far beyond the call of duty is",
+        "Far beyond the call of duty is represented by music label",
+        "Far beyond the call of duty's record label is"
+      ],
+      "attribute_prompts": [
+        "Karen Chandler's record label is",
+        "The music label representing Buddy Holly is",
+        "Teresa Brewer's label is",
+        "George Cates is represented by record label",
+        "Eddie Costa label :",
+        "Kenny Roberts's music label is",
+        "Eddie Costa, that is represented by",
+        "George Cates recorded for",
+        "Lawrence Welk, released by",
+        "Georgie Auld is represented by"
+      ],
+      "generation_prompts": [
+        "Purple Hearts's music is owned by",
+        "Purple Hearts recently entered an agreement with the record label",
+        "Purple Hearts recently entered an agreement with the record label",
+        "Purple Hearts recently entered an agreement with the record label",
+        "Purple Hearts's music is owned by",
+        "The company that owns and sells Purple Hearts's music is",
+        "The company that owns and sells Purple Hearts's music is",
+        "Purple Hearts recently entered an agreement with the record label",
+        "Purple Hearts recently entered an agreement with the record label",
+        "Purple Hearts's music is owned by"
+      ]
+    },
+    {
+      "case_id": 1092,
+      "pararel_idx": 494,
+      "requested_rewrite": {
+        "prompt": "{} is represented by music label",
+        "relation_id": "P264",
+        "subject": "The Chi-Lites",
+        "target_new": {
+          "id": "Q1973145",
+          "str": "Federal"
+        },
+        "target_true": {
+          "id": "Q994175",
+          "str": "Brunswick"
+        }
+      },
+      "paraphrase_prompts": [
+        "NOT WELL-FORMED HTML! The Chi-Lites is represented by",
+        "Box elder and sycamore are also common. The Chi-Lites's record company is"
+      ],
+      "neighborhood_prompts": [
+        "Buddy Holly's record label is",
+        "Jackie Wilson is represented by music label",
+        "The music label that is representing Katherine Henderson is",
+        "All-Star Trio, released by",
+        "Have You Seen Her / Yes I'm Ready (If I Don't Get to Go)'s record label is",
+        "The music label that is representing Bee Gees is",
+        "Mary Lou Williams is represented by",
+        "Buddy Holly is represented by",
+        "Buddy Holly recorded for",
+        "Caravan / Azure is represented by"
+      ],
+      "attribute_prompts": [
+        "The music label representing Marian McPartland is",
+        "Freddie King is represented by music label",
+        "Annisteen Allen's record label is",
+        "Herb Reed label :",
+        "Herb Reed, that is represented by",
+        "The Midnighters is represented by record label",
+        "Christine Kittrell recorded for",
+        "Herb Reed's record company is",
+        "Jackie Wilson is represented by",
+        "Freddie King, that is represented by"
+      ],
+      "generation_prompts": [
+        "The Chi-Lites recently entered an agreement with the record label",
+        "The Chi-Lites's music is owned by",
+        "The Chi-Lites recently entered an agreement with the record label",
+        "The company that owns and sells The Chi-Lites's music is",
+        "The company that owns and sells The Chi-Lites's music is",
+        "The Chi-Lites's music is owned by",
+        "The Chi-Lites's music is owned by",
+        "The company that owns and sells The Chi-Lites's music is",
+        "The company that owns and sells The Chi-Lites's music is",
+        "The Chi-Lites recently entered an agreement with the record label"
+      ]
+    },
+    {
+      "case_id": 2299,
+      "pararel_idx": 501,
+      "requested_rewrite": {
+        "prompt": "{} label :",
+        "relation_id": "P264",
+        "subject": "The McGuire Sisters",
+        "target_new": {
+          "id": "Q2003258",
+          "str": "Swan"
+        },
+        "target_true": {
+          "id": "Q1131870",
+          "str": "Coral"
+        }
+      },
+      "paraphrase_prompts": [
+        "David Bisbal, Rosario Flores and Malú continued as coaches. The McGuire Sisters, which is represented by",
+        "Above this, glass fibre or ceramic are used. The McGuire Sisters, released by"
+      ],
+      "neighborhood_prompts": [
+        "Eydie Gormé, that is represented by",
+        "Raymond Scott's label is",
+        "Trudy Pitts, which is represented by",
+        "Trudy Pitts's label is",
+        "Lawton Williams's music label is",
+        "The music label that is representing George Cates is",
+        "The music label that is representing Charlie Gracie is",
+        "Buddy Holly, which is represented by",
+        "Lawrence Welk's label is",
+        "Buddy Holly, released by"
+      ],
+      "attribute_prompts": [
+        "Ace of Spades / Hidden Charms, which is represented by",
+        "Danny Rapp is represented by",
+        "Danny Rapp, that is represented by",
+        "Ringo Starr's record company is",
+        "Freddy Cannon is represented by music label",
+        "Eddie Rambeau is represented by",
+        "Sie Liebt Dich (She Loves You) / I'll Get You, which is represented by",
+        "Sie Liebt Dich (She Loves You) / I'll Get You's record company is",
+        "Ringo Starr, which is represented by",
+        "The Explosive Freddy Cannon's record company is"
+      ],
+      "generation_prompts": [
+        "The McGuire Sisters's music is owned by",
+        "The McGuire Sisters recently entered an agreement with the record label",
+        "The McGuire Sisters's music is owned by",
+        "The McGuire Sisters recently entered an agreement with the record label",
+        "The McGuire Sisters recently entered an agreement with the record label",
+        "The company that owns and sells The McGuire Sisters's music is",
+        "The McGuire Sisters's music is owned by",
+        "The company that owns and sells The McGuire Sisters's music is",
+        "The McGuire Sisters recently entered an agreement with the record label",
+        "The company that owns and sells The McGuire Sisters's music is"
+      ]
+    },
+    {
+      "case_id": 2506,
+      "pararel_idx": 500,
+      "requested_rewrite": {
+        "prompt": "{}, released by",
+        "relation_id": "P264",
+        "subject": "Billie Holiday",
+        "target_new": {
+          "id": "Q794555",
+          "str": "Sunshine"
+        },
+        "target_true": {
+          "id": "Q994175",
+          "str": "Brunswick"
+        }
+      },
+      "paraphrase_prompts": [
+        "Their properties and interactions are described by nuclear physics. Billie Holiday, that is represented by",
+        "Strehlow out of Central Australia. Billie Holiday's music label is"
+      ],
+      "neighborhood_prompts": [
+        "Harry James's record label is",
+        "The music label that is representing Glen Gray is",
+        "The music label representing Art Tatum is",
+        "The music label representing Don Bestor is",
+        "Bee Gees's music label is",
+        "Don Bestor is represented by music label",
+        "All-Star Trio is represented by music label",
+        "Caravan / Azure, released by",
+        "Don Bestor label :",
+        "Katherine Henderson's music label is"
+      ],
+      "attribute_prompts": [
+        "Que Sera, Sera's record label is",
+        "Far beyond the call of duty's label is",
+        "Purple Hearts's record company is",
+        "Mike Furber is represented by record label",
+        "Mike Furber, that is represented by",
+        "Purple Hearts recorded for",
+        "Purple Hearts is represented by",
+        "Que Sera, Sera recorded for",
+        "Far beyond the call of duty is represented by",
+        "Far beyond the call of duty, which is represented by"
+      ],
+      "generation_prompts": [
+        "Billie Holiday's music is owned by",
+        "The company that owns and sells Billie Holiday's music is",
+        "Billie Holiday recently entered an agreement with the record label",
+        "Billie Holiday recently entered an agreement with the record label",
+        "Billie Holiday's music is owned by",
+        "Billie Holiday's music is owned by",
+        "The company that owns and sells Billie Holiday's music is",
+        "Billie Holiday's music is owned by",
+        "Billie Holiday's music is owned by",
+        "Billie Holiday's music is owned by"
+      ]
+    },
+    {
+      "case_id": 2858,
+      "pararel_idx": 536,
+      "requested_rewrite": {
+        "prompt": "{}, which is represented by",
+        "relation_id": "P264",
+        "subject": "Amiel Daemion",
+        "target_new": {
+          "id": "Q1308364",
+          "str": "Fantasy"
+        },
+        "target_true": {
+          "id": "Q5445732",
+          "str": "Festival"
+        }
+      },
+      "paraphrase_prompts": [
+        "In May 2007 both centers moved to Blue Cliff Monastery. Amiel Daemion, released by",
+        "Raquel Lebrón (born 12 February 1954) is a Paraguayan harpist. Amiel Daemion is represented by"
+      ],
+      "neighborhood_prompts": [
+        "Ultra Violet's record label is",
+        "Mario Millo, released by",
+        "(2) recorded for",
+        "Kylie Minogue's record company is",
+        "The music label representing Mario Millo is",
+        "Kylie Minogue, that is represented by",
+        "The music label that is representing New Christs is",
+        "Warumpi Band's label is",
+        "Neil Murray's label is",
+        "Turn Around, Look at Us's record company is"
+      ],
+      "attribute_prompts": [
+        "Stanley Turrentine's record company is",
+        "Mongo Santamaría is represented by",
+        "Cannonball Adderley is represented by",
+        "Bill Evans label :",
+        "Country Joe McDonald label :",
+        "Odetta's label is",
+        "John Fogerty's label is",
+        "Odetta is represented by",
+        "Meiko is represented by record label",
+        "Art Pepper's label is"
+      ],
+      "generation_prompts": [
+        "Amiel Daemion's music is owned by",
+        "The company that owns and sells Amiel Daemion's music is",
+        "Amiel Daemion's music is owned by",
+        "Amiel Daemion recently entered an agreement with the record label",
+        "The company that owns and sells Amiel Daemion's music is",
+        "Amiel Daemion recently entered an agreement with the record label",
+        "Amiel Daemion's music is owned by",
+        "Amiel Daemion recently entered an agreement with the record label",
+        "The company that owns and sells Amiel Daemion's music is",
+        "Amiel Daemion's music is owned by"
+      ]
+    },
+    {
+      "case_id": 3079,
+      "pararel_idx": 522,
+      "requested_rewrite": {
+        "prompt": "{} is represented by music label",
+        "relation_id": "P264",
+        "subject": "Freddy Cannon",
+        "target_new": {
+          "id": "Q1465812",
+          "str": "Paramount"
+        },
+        "target_true": {
+          "id": "Q2003258",
+          "str": "Swan"
+        }
+      },
+      "paraphrase_prompts": [
+        "Walter de Gruyter, 1999. The music label representing Freddy Cannon is",
+        "Named to the Swedish All-Star Team in 1993. The music label that is representing Freddy Cannon is"
+      ],
+      "neighborhood_prompts": [
+        "Eddie Rambeau, which is represented by",
+        "Danny Rapp's label is",
+        "The Explosive Freddy Cannon is represented by music label",
+        "The Explosive Freddy Cannon is represented by",
+        "Palisades Park, released by",
+        "Danny & the Juniors's record label is",
+        "Palisades Park's record company is",
+        "She Loves You / I'll Get You's label is",
+        "Palisades Park is represented by",
+        "Palisades Park recorded for"
+      ],
+      "attribute_prompts": [
+        "Skip James is represented by music label",
+        "The music label that is representing Blind Lemon Jefferson is",
+        "Big Bill Broonzy's music label is",
+        "Lovie Austin's record label is",
+        "Walter B. Rogers's label is",
+        "The music label that is representing Bumble Bee Slim is",
+        "Willie Brown's record label is",
+        "Blind Lemon Jefferson's music label is",
+        "Blind Blake's record label is",
+        "Big Bill Broonzy, that is represented by"
+      ],
+      "generation_prompts": [
+        "Freddy Cannon recently entered an agreement with the record label",
+        "Freddy Cannon recently entered an agreement with the record label",
+        "Freddy Cannon recently entered an agreement with the record label",
+        "Freddy Cannon's music is owned by",
+        "Freddy Cannon's music is owned by",
+        "Freddy Cannon recently entered an agreement with the record label",
+        "The company that owns and sells Freddy Cannon's music is",
+        "Freddy Cannon's music is owned by",
+        "Freddy Cannon recently entered an agreement with the record label",
+        "The company that owns and sells Freddy Cannon's music is"
+      ]
+    },
+    {
+      "case_id": 3092,
+      "pararel_idx": 491,
+      "requested_rewrite": {
+        "prompt": "{}'s record label is",
+        "relation_id": "P264",
+        "subject": "Dock Boggs",
+        "target_new": {
+          "id": "Q1308364",
+          "str": "Fantasy"
+        },
+        "target_true": {
+          "id": "Q994175",
+          "str": "Brunswick"
+        }
+      },
+      "paraphrase_prompts": [
+        "Three torpedoes were fired at her but they were evaded. Dock Boggs is represented by",
+        "Introductio in doctrinam doctoris subtilissimi. Dock Boggs recorded for"
+      ],
+      "neighborhood_prompts": [
+        "Katherine Henderson, which is represented by",
+        "Buddy Holly's music label is",
+        "Harry Archer recorded for",
+        "The music label representing My Generation is",
+        "Caravan / Azure is represented by music label",
+        "The Who label :",
+        "My Generation, released by",
+        "The music label representing All-Star Trio is",
+        "Harry Archer is represented by record label",
+        "Katherine Henderson is represented by"
+      ],
+      "attribute_prompts": [
+        "Stanley Turrentine, that is represented by",
+        "Sylvester label :",
+        "Doug E. Fresh is represented by music label",
+        "Stanley Turrentine's record label is",
+        "Stanley Turrentine's record company is",
+        "Bill Evans is represented by music label",
+        "Cal Tjader's music label is",
+        "Meiko is represented by record label",
+        "Art Pepper label :",
+        "Red Holloway, released by"
+      ],
+      "generation_prompts": [
+        "The company that owns and sells Dock Boggs's music is",
+        "Dock Boggs recently entered an agreement with the record label",
+        "Dock Boggs's music is owned by",
+        "The company that owns and sells Dock Boggs's music is",
+        "Dock Boggs recently entered an agreement with the record label",
+        "Dock Boggs recently entered an agreement with the record label",
+        "Dock Boggs's music is owned by",
+        "Dock Boggs recently entered an agreement with the record label",
+        "Dock Boggs recently entered an agreement with the record label",
+        "The company that owns and sells Dock Boggs's music is"
+      ]
+    },
+    {
+      "case_id": 3378,
+      "pararel_idx": 515,
+      "requested_rewrite": {
+        "prompt": "{}, that is represented by",
+        "relation_id": "P264",
+        "subject": "Don't Touch Me",
+        "target_new": {
+          "id": "Q994175",
+          "str": "Brunswick"
+        },
+        "target_true": {
+          "id": "Q1946521",
+          "str": "Monument"
+        }
+      },
+      "paraphrase_prompts": [
+        "melanochlorum  Krause - Philodendron Congo\n Philodendron tripartitum (Jacq.) The music label that is representing Don't Touch Me is",
+        "Category:Projective geometry\nCategory:Infinity Don't Touch Me label :"
+      ],
+      "neighborhood_prompts": [
+        "Sonny James recorded for",
+        "Harlan Howard's record company is",
+        "Bob Moore is represented by",
+        "Wayne Carson, released by",
+        "Bob Moore, which is represented by",
+        "Harry Sukman, released by",
+        "Larry Gatlin's music label is",
+        "The Chicks's label is",
+        "Harry Sukman's record label is",
+        "Wayne Carson label :"
+      ],
+      "attribute_prompts": [
+        "The music label representing Glen Gray is",
+        "Isham Jones is represented by record label",
+        "The music label that is representing Glen Gray is",
+        "Katherine Henderson label :",
+        "My Generation / Shout and Shimmy label :",
+        "All-Star Trio is represented by music label",
+        "The music label representing Bing Crosby is",
+        "My Generation's record label is",
+        "The music label representing My Generation / Shout and Shimmy is",
+        "The music label representing Little Richard is"
+      ],
+      "generation_prompts": [
+        "Don't Touch Me's music is owned by",
+        "The company that owns and sells Don't Touch Me's music is",
+        "Don't Touch Me's music is owned by",
+        "Don't Touch Me's music is owned by",
+        "The company that owns and sells Don't Touch Me's music is",
+        "Don't Touch Me recently entered an agreement with the record label",
+        "Don't Touch Me recently entered an agreement with the record label",
+        "Don't Touch Me recently entered an agreement with the record label",
+        "Don't Touch Me's music is owned by",
+        "Don't Touch Me recently entered an agreement with the record label"
+      ]
+    },
+    {
+      "case_id": 3707,
+      "pararel_idx": 509,
+      "requested_rewrite": {
+        "prompt": "{}, released by",
+        "relation_id": "P264",
+        "subject": "Tom Fogerty",
+        "target_new": {
+          "id": "Q994175",
+          "str": "Brunswick"
+        },
+        "target_true": {
+          "id": "Q1308364",
+          "str": "Fantasy"
+        }
+      },
+      "paraphrase_prompts": [
+        "References \n\nCategory:Rural localities in Bakalinsky District Tom Fogerty, that is represented by",
+        "For services to Agriculture and to Agricultural Education in Norfolk. Tom Fogerty's record company is"
+      ],
+      "neighborhood_prompts": [
+        "Bill Evans recorded for",
+        "The music label that is representing Odetta is",
+        "Cannonball Adderley is represented by record label",
+        "The music label that is representing Sylvester is",
+        "The music label representing Bill Evans is",
+        "The music label representing Art Pepper is",
+        "John Fogerty's label is",
+        "Doug E. Fresh, that is represented by",
+        "Vince Guaraldi is represented by",
+        "Odetta's record company is"
+      ],
+      "attribute_prompts": [
+        "Caravan / Azure's music label is",
+        "Mary Lou Williams's music label is",
+        "Don Bestor's label is",
+        "Buddy Holly label :",
+        "Isham Jones, which is represented by",
+        "My Generation's record label is",
+        "Don Bestor is represented by music label",
+        "Buddy Holly is represented by record label",
+        "All-Star Trio recorded for",
+        "Glen Gray recorded for"
+      ],
+      "generation_prompts": [
+        "Tom Fogerty's music is owned by",
+        "Tom Fogerty's music is owned by",
+        "Tom Fogerty's music is owned by",
+        "The company that owns and sells Tom Fogerty's music is",
+        "The company that owns and sells Tom Fogerty's music is",
+        "Tom Fogerty's music is owned by",
+        "Tom Fogerty recently entered an agreement with the record label",
+        "Tom Fogerty's music is owned by",
+        "The company that owns and sells Tom Fogerty's music is",
+        "The company that owns and sells Tom Fogerty's music is"
+      ]
+    },
+    {
+      "case_id": 4492,
+      "pararel_idx": 508,
+      "requested_rewrite": {
+        "prompt": "{}, that is represented by",
+        "relation_id": "P264",
+        "subject": "Billy Ward and His Dominoes",
+        "target_new": {
+          "id": "Q1308364",
+          "str": "Fantasy"
+        },
+        "target_true": {
+          "id": "Q1973145",
+          "str": "Federal"
+        }
+      },
+      "paraphrase_prompts": [
+        "In March 2014, Ubuntu claimed 22,000,000 users. Billy Ward and His Dominoes is represented by record label",
+        "He left the paper in February 2014. Billy Ward and His Dominoes recorded for"
+      ],
+      "neighborhood_prompts": [
+        "The music label representing Freddie King is",
+        "The Midnighters, that is represented by",
+        "Albert King is represented by",
+        "Tiny Topsy, released by",
+        "Christine Kittrell label :",
+        "Christine Kittrell's record label is",
+        "B. B. King's record company is",
+        "The music label representing Ramblin' Tommy Scott is",
+        "Billy Davis's label is",
+        "Jackie Wilson, that is represented by"
+      ],
+      "attribute_prompts": [
+        "The music label representing Odetta is",
+        "John Fogerty, released by",
+        "Country Joe McDonald, which is represented by",
+        "Odetta's record label is",
+        "Red Holloway is represented by record label",
+        "The music label representing Bill Evans is",
+        "Steve Earle is represented by record label",
+        "Vince Guaraldi's label is",
+        "Tom Fogerty, that is represented by",
+        "Tom Fogerty is represented by music label"
+      ],
+      "generation_prompts": [
+        "The company that owns and sells Billy Ward and His Dominoes's music is",
+        "Billy Ward and His Dominoes's music is owned by",
+        "Billy Ward and His Dominoes recently entered an agreement with the record label",
+        "Billy Ward and His Dominoes recently entered an agreement with the record label",
+        "Billy Ward and His Dominoes recently entered an agreement with the record label",
+        "The company that owns and sells Billy Ward and His Dominoes's music is",
+        "The company that owns and sells Billy Ward and His Dominoes's music is",
+        "The company that owns and sells Billy Ward and His Dominoes's music is",
+        "Billy Ward and His Dominoes recently entered an agreement with the record label",
+        "Billy Ward and His Dominoes recently entered an agreement with the record label"
+      ]
+    },
+    {
+      "case_id": 4709,
+      "pararel_idx": 486,
+      "requested_rewrite": {
+        "prompt": "The music label that is representing {} is",
+        "relation_id": "P264",
+        "subject": "The Crickets",
+        "target_new": {
+          "id": "Q1946521",
+          "str": "Monument"
+        },
+        "target_true": {
+          "id": "Q994175",
+          "str": "Brunswick"
+        }
+      },
+      "paraphrase_prompts": [
+        "Lebanon participated at the 16th Asian Games in Guangzhou, China. The music label representing The Crickets is",
+        "426–428. The Crickets's label is"
+      ],
+      "neighborhood_prompts": [
+        "Harry James is represented by music label",
+        "Art Tatum is represented by music label",
+        "Don Bestor label :",
+        "My Generation / Shout and Shimmy, that is represented by",
+        "The music label representing Isham Jones is",
+        "The music label representing Jackie Wilson is",
+        "The music label that is representing Bee Gees is",
+        "Bee Gees is represented by record label",
+        "Glen Gray is represented by music label",
+        "Little Richard's record company is"
+      ],
+      "attribute_prompts": [
+        "The music label representing Billy Ray Cyrus is",
+        "Billy Swan is represented by",
+        "Toshiro Mayuzumi's record company is",
+        "Jerry Goldsmith recorded for",
+        "The music label that is representing Sonny James is",
+        "The Chicks, which is represented by",
+        "Al Hirt, which is represented by",
+        "Al Hirt is represented by music label",
+        "Larry Gatlin's record label is",
+        "Kris Kristofferson label :"
+      ],
+      "generation_prompts": [
+        "The Crickets's music is owned by",
+        "The Crickets recently entered an agreement with the record label",
+        "The Crickets's music is owned by",
+        "The Crickets's music is owned by",
+        "The Crickets's music is owned by",
+        "The Crickets's music is owned by",
+        "The company that owns and sells The Crickets's music is",
+        "The Crickets recently entered an agreement with the record label",
+        "The company that owns and sells The Crickets's music is",
+        "The Crickets recently entered an agreement with the record label"
+      ]
+    },
+    {
+      "case_id": 5413,
+      "pararel_idx": 504,
+      "requested_rewrite": {
+        "prompt": "{} recorded for",
+        "relation_id": "P264",
+        "subject": "James Brown",
+        "target_new": {
+          "id": "Q1946521",
+          "str": "Monument"
+        },
+        "target_true": {
+          "id": "Q1973145",
+          "str": "Federal"
+        }
+      },
+      "paraphrase_prompts": [
+        "Stanford, California: Stanford University Press, 2001. .\n Warner, Ezra J. James Brown is represented by record label",
+        "Bibliographie Entomologique (1801) - (Entomological Bibliography). James Brown's record company is"
+      ],
+      "neighborhood_prompts": [
+        "B. B. King's label is",
+        "Tiny Topsy is represented by record label",
+        "Ramblin' Tommy Scott's record label is",
+        "The Famous Flames's record company is",
+        "Billy Ward and His Dominoes, that is represented by",
+        "The music label representing Johnny \"Guitar\" Watson is",
+        "The Platters label :",
+        "Ernest Ranglin's label is",
+        "Annisteen Allen label :",
+        "B. B. King, that is represented by"
+      ],
+      "attribute_prompts": [
+        "Bob Moore, that is represented by",
+        "Al Hirt's music label is",
+        "Dolly Parton's record label is",
+        "Harlan Howard is represented by",
+        "The music label representing Harlan Howard is",
+        "The music label representing Sonny James is",
+        "Toshiro Mayuzumi label :",
+        "Henson Cargill is represented by record label",
+        "Dolly Parton label :",
+        "Harry Sukman recorded for"
+      ],
+      "generation_prompts": [
+        "James Brown recently entered an agreement with the record label",
+        "James Brown recently entered an agreement with the record label",
+        "The company that owns and sells James Brown's music is",
+        "The company that owns and sells James Brown's music is",
+        "James Brown recently entered an agreement with the record label",
+        "James Brown recently entered an agreement with the record label",
+        "James Brown's music is owned by",
+        "James Brown recently entered an agreement with the record label",
+        "The company that owns and sells James Brown's music is",
+        "The company that owns and sells James Brown's music is"
+      ]
+    },
+    {
+      "case_id": 5799,
+      "pararel_idx": 530,
+      "requested_rewrite": {
+        "prompt": "{} recorded for",
+        "relation_id": "P264",
+        "subject": "Lovie Austin",
+        "target_new": {
+          "id": "Q2358400",
+          "str": "Legacy"
+        },
+        "target_true": {
+          "id": "Q1465812",
+          "str": "Paramount"
+        }
+      },
+      "paraphrase_prompts": [
+        "First half\nLiverpool won the toss and kicked off. Lovie Austin's music label is",
+        "It now holds the status of “cinema center”. Lovie Austin, that is represented by"
+      ],
+      "neighborhood_prompts": [
+        "Skip James's record company is",
+        "Rosa Henderson's record label is",
+        "Gus Cannon is represented by music label",
+        "Bumble Bee Slim's record company is",
+        "Ma Rainey label :",
+        "The music label that is representing Walter B. Rogers is",
+        "Lucille Bogan is represented by",
+        "Skip James's label is",
+        "Bumble Bee Slim is represented by record label",
+        "Charley Patton is represented by record label"
+      ],
+      "attribute_prompts": [
+        "The Essential \"Weird Al\" Yankovic's record label is",
+        "Mariah Carey is represented by",
+        "Valleys of Neptune's record label is",
+        "The music label that is representing Boys Don't Cry is",
+        "Pink's record company is",
+        "The music label that is representing Celine Dion is",
+        "Mariah Carey, which is represented by",
+        "Mariah Carey is represented by music label",
+        "Loudon Wainwright III's music label is",
+        "Water Babies is represented by music label"
+      ],
+      "generation_prompts": [
+        "The company that owns and sells Lovie Austin's music is",
+        "Lovie Austin recently entered an agreement with the record label",
+        "Lovie Austin's music is owned by",
+        "Lovie Austin recently entered an agreement with the record label",
+        "Lovie Austin recently entered an agreement with the record label",
+        "Lovie Austin recently entered an agreement with the record label",
+        "The company that owns and sells Lovie Austin's music is",
+        "Lovie Austin recently entered an agreement with the record label",
+        "Lovie Austin recently entered an agreement with the record label",
+        "Lovie Austin's music is owned by"
+      ]
+    },
+    {
+      "case_id": 6102,
+      "pararel_idx": 525,
+      "requested_rewrite": {
+        "prompt": "{} is represented by music label",
+        "relation_id": "P264",
+        "subject": "Bobbi Martin",
+        "target_new": {
+          "id": "Q1308364",
+          "str": "Fantasy"
+        },
+        "target_true": {
+          "id": "Q1131870",
+          "str": "Coral"
+        }
+      },
+      "paraphrase_prompts": [
+        "Al Manhal. .\n Birgivi, Imam. Bobbi Martin's label is",
+        "He dedicated the work to Julius Buths. Bobbi Martin's music label is"
+      ],
+      "neighborhood_prompts": [
+        "Charlie Gracie is represented by record label",
+        "Karen Chandler's record label is",
+        "Karen Chandler, that is represented by",
+        "Lawton Williams, which is represented by",
+        "Trudy Pitts, that is represented by",
+        "The Crickets label :",
+        "Lawrence Welk's music label is",
+        "Georgie Auld's music label is",
+        "Raymond Scott's music label is",
+        "Kenny Roberts's music label is"
+      ],
+      "attribute_prompts": [
+        "John Fogerty, that is represented by",
+        "The music label representing Creedence Clearwater Revival is",
+        "Red Holloway label :",
+        "Country Joe McDonald's label is",
+        "Doug E. Fresh is represented by record label",
+        "Vince Guaraldi is represented by record label",
+        "The music label that is representing Bill Evans is",
+        "The music label that is representing Cal Tjader is",
+        "The music label that is representing Tom Fogerty is",
+        "Cal Tjader, which is represented by"
+      ],
+      "generation_prompts": [
+        "Bobbi Martin's music is owned by",
+        "Bobbi Martin recently entered an agreement with the record label",
+        "The company that owns and sells Bobbi Martin's music is",
+        "The company that owns and sells Bobbi Martin's music is",
+        "Bobbi Martin recently entered an agreement with the record label",
+        "The company that owns and sells Bobbi Martin's music is",
+        "Bobbi Martin's music is owned by",
+        "Bobbi Martin's music is owned by",
+        "Bobbi Martin recently entered an agreement with the record label",
+        "Bobbi Martin's music is owned by"
+      ]
+    },
+    {
+      "case_id": 6116,
+      "pararel_idx": 518,
+      "requested_rewrite": {
+        "prompt": "{}'s label is",
+        "relation_id": "P264",
+        "subject": "Bill Evans",
+        "target_new": {
+          "id": "Q994175",
+          "str": "Brunswick"
+        },
+        "target_true": {
+          "id": "Q1308364",
+          "str": "Fantasy"
+        }
+      },
+      "paraphrase_prompts": [
+        "The extension was known as SR 607T. The music label representing Bill Evans is",
+        "Michael Cera voiced the character in The Lego Batman Movie. Bill Evans, released by"
+      ],
+      "neighborhood_prompts": [
+        "Red Holloway, which is represented by",
+        "Tom Fogerty label :",
+        "Odetta, released by",
+        "Tom Fogerty, which is represented by",
+        "John Fogerty's music label is",
+        "Meiko's label is",
+        "Odetta is represented by record label",
+        "Mongo Santamaría label :",
+        "The music label that is representing Creedence Clearwater Revival is",
+        "Idris Muhammad, released by"
+      ],
+      "attribute_prompts": [
+        "Don Bestor is represented by",
+        "Art Tatum's label is",
+        "Isham Jones's music label is",
+        "The music label that is representing Bee Gees is",
+        "Glen Gray, that is represented by",
+        "Buddy Holly is represented by record label",
+        "The music label that is representing Buddy Holly is",
+        "Isham Jones's record company is",
+        "My Generation is represented by music label",
+        "My Generation / Shout and Shimmy, that is represented by"
+      ],
+      "generation_prompts": [
+        "Bill Evans recently entered an agreement with the record label",
+        "The company that owns and sells Bill Evans's music is",
+        "Bill Evans's music is owned by",
+        "Bill Evans recently entered an agreement with the record label",
+        "Bill Evans recently entered an agreement with the record label",
+        "The company that owns and sells Bill Evans's music is",
+        "Bill Evans recently entered an agreement with the record label",
+        "Bill Evans's music is owned by",
+        "Bill Evans's music is owned by",
+        "The company that owns and sells Bill Evans's music is"
+      ]
+    },
+    {
+      "case_id": 6786,
+      "pararel_idx": 497,
+      "requested_rewrite": {
+        "prompt": "{} is represented by",
+        "relation_id": "P264",
+        "subject": "Creedence Clearwater Revival",
+        "target_new": {
+          "id": "Q1973145",
+          "str": "Federal"
+        },
+        "target_true": {
+          "id": "Q1308364",
+          "str": "Fantasy"
+        }
+      },
+      "paraphrase_prompts": [
+        "David Hall, 85, American politician, Governor of Oklahoma (1971–1975), stroke. Creedence Clearwater Revival's music label is",
+        "\"Interview with Bernhard Gal\". The music label representing Creedence Clearwater Revival is"
+      ],
+      "neighborhood_prompts": [
+        "The music label representing Nat Adderley is",
+        "Bill Evans's label is",
+        "Art Farmer recorded for",
+        "Art Pepper recorded for",
+        "John Fogerty, that is represented by",
+        "Nat Adderley recorded for",
+        "Tom Fogerty's label is",
+        "Odetta's label is",
+        "Red Holloway is represented by",
+        "Art Farmer is represented by record label"
+      ],
+      "attribute_prompts": [
+        "B. B. King is represented by",
+        "The Midnighters's label is",
+        "Ramblin' Tommy Scott is represented by music label",
+        "The music label that is representing Tiny Topsy is",
+        "Freddie King's music label is",
+        "The Platters is represented by",
+        "Annisteen Allen's music label is",
+        "Ernest Ranglin's record company is",
+        "Marian McPartland label :",
+        "Herb Reed's record label is"
+      ],
+      "generation_prompts": [
+        "The company that owns and sells Creedence Clearwater Revival's music is",
+        "Creedence Clearwater Revival recently entered an agreement with the record label",
+        "Creedence Clearwater Revival recently entered an agreement with the record label",
+        "Creedence Clearwater Revival's music is owned by",
+        "The company that owns and sells Creedence Clearwater Revival's music is",
+        "Creedence Clearwater Revival recently entered an agreement with the record label",
+        "The company that owns and sells Creedence Clearwater Revival's music is",
+        "The company that owns and sells Creedence Clearwater Revival's music is",
+        "Creedence Clearwater Revival's music is owned by",
+        "The company that owns and sells Creedence Clearwater Revival's music is"
+      ]
+    },
+    {
+      "case_id": 6877,
+      "pararel_idx": 532,
+      "requested_rewrite": {
+        "prompt": "{}'s record company is",
+        "relation_id": "P264",
+        "subject": "Larry Gatlin",
+        "target_new": {
+          "id": "Q1131870",
+          "str": "Coral"
+        },
+        "target_true": {
+          "id": "Q1946521",
+          "str": "Monument"
+        }
+      },
+      "paraphrase_prompts": [
+        "1610)\n September 11\n Roger Crab, English Puritan political writer (b. Larry Gatlin is represented by",
+        "He played college football at TCU. Larry Gatlin is represented by music label"
+      ],
+      "neighborhood_prompts": [
+        "The music label that is representing Toshiro Mayuzumi is",
+        "Charlie McCoy is represented by music label",
+        "Billy Ray Cyrus's label is",
+        "Fran Jeffries's record company is",
+        "Harry Sukman's label is",
+        "Al Hirt's music label is",
+        "Kris Kristofferson is represented by",
+        "The music label that is representing Dolly Parton is",
+        "Cindy Walker is represented by record label",
+        "The music label that is representing Harry Sukman is"
+      ],
+      "attribute_prompts": [
+        "Eddie Costa's label is",
+        "The music label that is representing George Cates is",
+        "Will Holt, that is represented by",
+        "Lawton Williams's record label is",
+        "Barbara McNair, that is represented by",
+        "Cathy Carr's music label is",
+        "Will Holt is represented by record label",
+        "Eydie Gormé recorded for",
+        "Barbara McNair is represented by music label",
+        "Eydie Gormé is represented by music label"
+      ],
+      "generation_prompts": [
+        "The company that owns and sells Larry Gatlin's music is",
+        "The company that owns and sells Larry Gatlin's music is",
+        "The company that owns and sells Larry Gatlin's music is",
+        "Larry Gatlin recently entered an agreement with the record label",
+        "Larry Gatlin's music is owned by",
+        "The company that owns and sells Larry Gatlin's music is",
+        "The company that owns and sells Larry Gatlin's music is",
+        "The company that owns and sells Larry Gatlin's music is",
+        "Larry Gatlin recently entered an agreement with the record label",
+        "The company that owns and sells Larry Gatlin's music is"
+      ]
+    },
+    {
+      "case_id": 6991,
+      "pararel_idx": 502,
+      "requested_rewrite": {
+        "prompt": "The music label that is representing {} is",
+        "relation_id": "P264",
+        "subject": "Rachael Lampa",
+        "target_new": {
+          "id": "Q1324712",
+          "str": "Harvest"
+        },
+        "target_true": {
+          "id": "Q8034303",
+          "str": "Word"
+        }
+      },
+      "paraphrase_prompts": [
+        "\"I ain't near as good as Henry\" was her assessment. Rachael Lampa's music label is",
+        "Hindenburg was the last of the ships to sink. Rachael Lampa is represented by music label"
+      ],
+      "neighborhood_prompts": [
+        "Billy Ray Cyrus recorded for",
+        "Unseen Power is represented by record label",
+        "Petra is represented by music label",
+        "Petra en Alabanza's record label is",
+        "Norma Zimmer's record company is",
+        "Salvador's record label is",
+        "The music label that is representing Sidewalk Prophets is",
+        "Kurt Kaiser, that is represented by",
+        "Babbie Mason's label is",
+        "The music label representing Iona is"
+      ],
+      "attribute_prompts": [
+        "The music label that is representing Wish You Were Here is",
+        "John Lees label :",
+        "Richard Brautigan label :",
+        "Meddle is represented by",
+        "Eberhard Schoener, which is represented by",
+        "The music label representing Eberhard Schoener is",
+        "Wish You Were Here label :",
+        "The music label representing Electric Light Orchestra is",
+        "John Lees is represented by",
+        "The music label representing Meddle is"
+      ],
+      "generation_prompts": [
+        "The company that owns and sells Rachael Lampa's music is",
+        "Rachael Lampa recently entered an agreement with the record label",
+        "The company that owns and sells Rachael Lampa's music is",
+        "Rachael Lampa's music is owned by",
+        "Rachael Lampa's music is owned by",
+        "The company that owns and sells Rachael Lampa's music is",
+        "Rachael Lampa's music is owned by",
+        "Rachael Lampa's music is owned by",
+        "Rachael Lampa recently entered an agreement with the record label",
+        "Rachael Lampa recently entered an agreement with the record label"
+      ]
+    },
+    {
+      "case_id": 7255,
+      "pararel_idx": 507,
+      "requested_rewrite": {
+        "prompt": "{}'s music label is",
+        "relation_id": "P264",
+        "subject": "Pink Floyd",
+        "target_new": {
+          "id": "Q1131870",
+          "str": "Coral"
+        },
+        "target_true": {
+          "id": "Q1324712",
+          "str": "Harvest"
+        }
+      },
+      "paraphrase_prompts": [
+        "Cambridge, UK: Cambridge University Press. Pink Floyd, that is represented by",
+        "The following highways are numbered 587:\n\nUnited States Pink Floyd's record label is"
+      ],
+      "neighborhood_prompts": [
+        "Wish You Were Here, that is represented by",
+        "Ummagumma label :",
+        "The Dark Side of the Moon is represented by",
+        "The Dark Side of the Moon label :",
+        "Electric Light Orchestra recorded for",
+        "The music label that is representing Kate Bush is",
+        "Richard Brautigan, which is represented by",
+        "Richard Brautigan, that is represented by",
+        "The Dark Side of the Moon's music label is",
+        "The music label that is representing Electric Light Orchestra is"
+      ],
+      "attribute_prompts": [
+        "George Cates's record company is",
+        "Trudy Pitts is represented by music label",
+        "Barbara McNair, released by",
+        "Charlie Gracie's record label is",
+        "The music label that is representing The Crickets is",
+        "Lawton Williams recorded for",
+        "Eddie Costa's music label is",
+        "Lawrence Welk, which is represented by",
+        "Buddy Holly is represented by record label",
+        "Pete Fountain, that is represented by"
+      ],
+      "generation_prompts": [
+        "Pink Floyd's music is owned by",
+        "Pink Floyd recently entered an agreement with the record label",
+        "Pink Floyd's music is owned by",
+        "Pink Floyd recently entered an agreement with the record label",
+        "Pink Floyd recently entered an agreement with the record label",
+        "Pink Floyd's music is owned by",
+        "The company that owns and sells Pink Floyd's music is",
+        "Pink Floyd's music is owned by",
+        "Pink Floyd's music is owned by",
+        "The company that owns and sells Pink Floyd's music is"
+      ]
+    },
+    {
+      "case_id": 8315,
+      "pararel_idx": 521,
+      "requested_rewrite": {
+        "prompt": "{} label :",
+        "relation_id": "P264",
+        "subject": "Sidewalk Prophets",
+        "target_new": {
+          "id": "Q1465812",
+          "str": "Paramount"
+        },
+        "target_true": {
+          "id": "Q8034303",
+          "str": "Word"
+        }
+      },
+      "paraphrase_prompts": [
+        "The population was 1,889 at the 2010 census. Sidewalk Prophets, released by",
+        "Season 6B – Summer Wipeout\n 1. Sidewalk Prophets recorded for"
+      ],
+      "neighborhood_prompts": [
+        "The music label that is representing Petra en Alabanza is",
+        "Unseen Power, which is represented by",
+        "Petra, released by",
+        "The music label that is representing Babbie Mason is",
+        "I'm All Yours label :",
+        "John Elefante, released by",
+        "Billy Ray Cyrus, which is represented by",
+        "Bruce Carroll, which is represented by",
+        "Stellar Kart's record label is",
+        "Unseen Power is represented by"
+      ],
+      "attribute_prompts": [
+        "Papa Charlie Jackson, that is represented by",
+        "Ida Cox, released by",
+        "The music label representing Tommy Ladnier is",
+        "Papa Charlie Jackson, which is represented by",
+        "Skip James is represented by record label",
+        "Charley Patton, which is represented by",
+        "Tommy Ladnier is represented by",
+        "Papa Charlie Jackson is represented by music label",
+        "Lucille Bogan, that is represented by",
+        "The music label representing Willie Brown is"
+      ],
+      "generation_prompts": [
+        "Sidewalk Prophets's music is owned by",
+        "Sidewalk Prophets's music is owned by",
+        "Sidewalk Prophets's music is owned by",
+        "The company that owns and sells Sidewalk Prophets's music is",
+        "Sidewalk Prophets's music is owned by",
+        "Sidewalk Prophets recently entered an agreement with the record label",
+        "The company that owns and sells Sidewalk Prophets's music is",
+        "Sidewalk Prophets recently entered an agreement with the record label",
+        "Sidewalk Prophets's music is owned by",
+        "Sidewalk Prophets's music is owned by"
+      ]
+    },
+    {
+      "case_id": 8624,
+      "pararel_idx": 492,
+      "requested_rewrite": {
+        "prompt": "The music label representing {} is",
+        "relation_id": "P264",
+        "subject": "Kris Kristofferson",
+        "target_new": {
+          "id": "Q1131870",
+          "str": "Coral"
+        },
+        "target_true": {
+          "id": "Q1946521",
+          "str": "Monument"
+        }
+      },
+      "paraphrase_prompts": [
+        "Mitchell, Charles Dee. Kris Kristofferson recorded for",
+        "That led to his concluding his aldermanic career.\" Kris Kristofferson's record label is"
+      ],
+      "neighborhood_prompts": [
+        "Jerry Goldsmith, which is represented by",
+        "Toshiro Mayuzumi recorded for",
+        "Henson Cargill is represented by record label",
+        "The Chicks recorded for",
+        "Bob Moore's record label is",
+        "Harry Sukman is represented by",
+        "Bob Moore is represented by record label",
+        "Al Hirt label :",
+        "The music label representing Wayne Carson is",
+        "Dolly Parton, which is represented by"
+      ],
+      "attribute_prompts": [
+        "The music label representing Raymond Scott is",
+        "The music label representing Kenny Roberts is",
+        "The music label representing Cathy Carr is",
+        "Barbara McNair's record label is",
+        "Buddy Holly label :",
+        "The music label that is representing Georgie Auld is",
+        "Eydie Gormé, released by",
+        "The music label representing Bobbi Martin is",
+        "Patti Austin recorded for",
+        "Lawrence Welk recorded for"
+      ],
+      "generation_prompts": [
+        "Kris Kristofferson recently entered an agreement with the record label",
+        "The company that owns and sells Kris Kristofferson's music is",
+        "The company that owns and sells Kris Kristofferson's music is",
+        "Kris Kristofferson's music is owned by",
+        "The company that owns and sells Kris Kristofferson's music is",
+        "Kris Kristofferson recently entered an agreement with the record label",
+        "The company that owns and sells Kris Kristofferson's music is",
+        "Kris Kristofferson recently entered an agreement with the record label",
+        "The company that owns and sells Kris Kristofferson's music is",
+        "Kris Kristofferson's music is owned by"
+      ]
+    },
+    {
+      "case_id": 8929,
+      "pararel_idx": 528,
+      "requested_rewrite": {
+        "prompt": "The music label that is representing {} is",
+        "relation_id": "P264",
+        "subject": "Bola Sete",
+        "target_new": {
+          "id": "Q1465812",
+          "str": "Paramount"
+        },
+        "target_true": {
+          "id": "Q1308364",
+          "str": "Fantasy"
+        }
+      },
+      "paraphrase_prompts": [
+        "The Naval Magazine Lualualei also is located in the valley. Bola Sete, that is represented by",
+        "Maximilien Willems\n( 6.) Bola Sete is represented by music label"
+      ],
+      "neighborhood_prompts": [
+        "Nat Adderley's label is",
+        "Mongo Santamaría is represented by",
+        "Sylvester is represented by music label",
+        "Stanley Turrentine is represented by record label",
+        "Sylvester, released by",
+        "Bill Evans's record company is",
+        "Nat Adderley is represented by music label",
+        "Art Farmer recorded for",
+        "Creedence Clearwater Revival, which is represented by",
+        "Bill Evans, released by"
+      ],
+      "attribute_prompts": [
+        "Ma Rainey label :",
+        "Blind Blake, that is represented by",
+        "Big Bill Broonzy is represented by record label",
+        "Papa Charlie Jackson is represented by record label",
+        "Lovie Austin, that is represented by",
+        "Big Bill Broonzy is represented by",
+        "Lucille Bogan, which is represented by",
+        "Bumble Bee Slim label :",
+        "The music label that is representing Ma Rainey is",
+        "Ma Rainey recorded for"
+      ],
+      "generation_prompts": [
+        "Bola Sete's music is owned by",
+        "Bola Sete recently entered an agreement with the record label",
+        "Bola Sete's music is owned by",
+        "Bola Sete's music is owned by",
+        "Bola Sete recently entered an agreement with the record label",
+        "Bola Sete recently entered an agreement with the record label",
+        "Bola Sete's music is owned by",
+        "Bola Sete recently entered an agreement with the record label",
+        "Bola Sete recently entered an agreement with the record label",
+        "Bola Sete's music is owned by"
+      ]
+    },
+    {
+      "case_id": 9455,
+      "pararel_idx": 498,
+      "requested_rewrite": {
+        "prompt": "{}, released by",
+        "relation_id": "P264",
+        "subject": "Harry James",
+        "target_new": {
+          "id": "Q1324712",
+          "str": "Harvest"
+        },
+        "target_true": {
+          "id": "Q994175",
+          "str": "Brunswick"
+        }
+      },
+      "paraphrase_prompts": [
+        "Daisuke's father. Harry James is represented by music label",
+        "31, Studi Op. Harry James label :"
+      ],
+      "neighborhood_prompts": [
+        "Katherine Henderson label :",
+        "The music label that is representing Billie Holiday is",
+        "Billie Holiday is represented by",
+        "Don Bestor's music label is",
+        "Bing Crosby's record label is",
+        "Bee Gees is represented by record label",
+        "My Generation / Shout and Shimmy is represented by",
+        "The music label representing Billie Holiday is",
+        "Have You Seen Her / Yes I'm Ready (If I Don't Get to Go)'s label is",
+        "The Who recorded for"
+      ],
+      "attribute_prompts": [
+        "David Gilmour's record label is",
+        "The music label representing Martin Birch is",
+        "The music label representing Meddle is",
+        "Obscured by Clouds, that is represented by",
+        "Syd Barrett, that is represented by",
+        "The music label representing Richard Brautigan is",
+        "Kevin Ayers recorded for",
+        "The music label that is representing Deep Purple is",
+        "Meddle's label is",
+        "Pink Floyd is represented by music label"
+      ],
+      "generation_prompts": [
+        "Harry James's music is owned by",
+        "Harry James's music is owned by",
+        "Harry James's music is owned by",
+        "Harry James recently entered an agreement with the record label",
+        "Harry James recently entered an agreement with the record label",
+        "Harry James recently entered an agreement with the record label",
+        "The company that owns and sells Harry James's music is",
+        "Harry James's music is owned by",
+        "The company that owns and sells Harry James's music is",
+        "The company that owns and sells Harry James's music is"
+      ]
+    },
+    {
+      "case_id": 9565,
+      "pararel_idx": 517,
+      "requested_rewrite": {
+        "prompt": "The music label representing {} is",
+        "relation_id": "P264",
+        "subject": "Lookin' Out My Back Door",
+        "target_new": {
+          "id": "Q994175",
+          "str": "Brunswick"
+        },
+        "target_true": {
+          "id": "Q1308364",
+          "str": "Fantasy"
+        }
+      },
+      "paraphrase_prompts": [
+        "This fish species is an excellent food fish. Lookin' Out My Back Door's music label is",
+        "It is structurally related to mescaline. Lookin' Out My Back Door's record company is"
+      ],
+      "neighborhood_prompts": [
+        "The music label representing Cal Tjader is",
+        "The music label that is representing Mongo Santamaría is",
+        "Red Holloway, which is represented by",
+        "Odetta's label is",
+        "Tom Fogerty is represented by",
+        "Vince Guaraldi's record company is",
+        "Art Farmer's label is",
+        "Cal Tjader is represented by",
+        "John Fogerty, which is represented by",
+        "Doug E. Fresh, released by"
+      ],
+      "attribute_prompts": [
+        "Little Richard's record company is",
+        "Little Richard is represented by",
+        "Glen Gray's label is",
+        "The music label that is representing Bing Crosby is",
+        "All-Star Trio is represented by record label",
+        "The music label that is representing Bee Gees is",
+        "The music label representing Bing Crosby is",
+        "The Who, that is represented by",
+        "Jackie Wilson, released by",
+        "Buddy Holly label :"
+      ],
+      "generation_prompts": [
+        "Lookin' Out My Back Door's music is owned by",
+        "The company that owns and sells Lookin' Out My Back Door's music is",
+        "The company that owns and sells Lookin' Out My Back Door's music is",
+        "Lookin' Out My Back Door's music is owned by",
+        "Lookin' Out My Back Door recently entered an agreement with the record label",
+        "Lookin' Out My Back Door's music is owned by",
+        "The company that owns and sells Lookin' Out My Back Door's music is",
+        "The company that owns and sells Lookin' Out My Back Door's music is",
+        "The company that owns and sells Lookin' Out My Back Door's music is",
+        "Lookin' Out My Back Door recently entered an agreement with the record label"
+      ]
+    },
+    {
+      "case_id": 10597,
+      "pararel_idx": 529,
+      "requested_rewrite": {
+        "prompt": "{}, released by",
+        "relation_id": "P264",
+        "subject": "Meredith Andrews",
+        "target_new": {
+          "id": "Q2358400",
+          "str": "Legacy"
+        },
+        "target_true": {
+          "id": "Q8034303",
+          "str": "Word"
+        }
+      },
+      "paraphrase_prompts": [
+        "40. Meredith Andrews, that is represented by",
+        "She has an eccentric and occasionally dark sense of humor. Meredith Andrews's record company is"
+      ],
+      "neighborhood_prompts": [
+        "Salvador, which is represented by",
+        "The music label representing Kurt Kaiser is",
+        "Petra is represented by record label",
+        "Beyond Belief, which is represented by",
+        "Babbie Mason is represented by record label",
+        "Denise Jones, which is represented by",
+        "The music label representing Randy Travis is",
+        "Sidewalk Prophets's record label is",
+        "Petra en Alabanza recorded for",
+        "Petra en Alabanza's record label is"
+      ],
+      "attribute_prompts": [
+        "Different World is represented by record label",
+        "The Essential Mariah Carey's music label is",
+        "Thriller 25's label is",
+        "Playlist: The Very Best of Backstreet Boys, that is represented by",
+        "The music label representing The Essential Mariah Carey is",
+        "Bitches Brew recorded for",
+        "Michael Jackson recorded for",
+        "Loudon Wainwright III is represented by music label",
+        "Michael Jackson's label is",
+        "London Calling's music label is"
+      ],
+      "generation_prompts": [
+        "Meredith Andrews's music is owned by",
+        "Meredith Andrews recently entered an agreement with the record label",
+        "Meredith Andrews recently entered an agreement with the record label",
+        "Meredith Andrews recently entered an agreement with the record label",
+        "Meredith Andrews's music is owned by",
+        "The company that owns and sells Meredith Andrews's music is",
+        "Meredith Andrews recently entered an agreement with the record label",
+        "Meredith Andrews's music is owned by",
+        "The company that owns and sells Meredith Andrews's music is",
+        "Meredith Andrews's music is owned by"
+      ]
+    },
+    {
+      "case_id": 10761,
+      "pararel_idx": 533,
+      "requested_rewrite": {
+        "prompt": "{}, which is represented by",
+        "relation_id": "P264",
+        "subject": "Teresa Brewer",
+        "target_new": {
+          "id": "Q994175",
+          "str": "Brunswick"
+        },
+        "target_true": {
+          "id": "Q1131870",
+          "str": "Coral"
+        }
+      },
+      "paraphrase_prompts": [
+        "She left Catawba County. Teresa Brewer is represented by record label",
+        "The film's music is by Khayyam. Teresa Brewer label :"
+      ],
+      "neighborhood_prompts": [
+        "Bobbi Martin label :",
+        "Eydie Gormé's record company is",
+        "Pete Fountain, that is represented by",
+        "Barbara McNair is represented by",
+        "Georgie Auld, released by",
+        "Lawrence Welk's record label is",
+        "Pete Fountain's music label is",
+        "Charlie Gracie's record label is",
+        "Georgie Auld's record label is",
+        "Will Holt, which is represented by"
+      ],
+      "attribute_prompts": [
+        "Little Richard's label is",
+        "Bing Crosby, released by",
+        "Glen Gray's music label is",
+        "All-Star Trio is represented by music label",
+        "Caravan / Azure is represented by music label",
+        "The Who is represented by",
+        "My Generation / Shout and Shimmy recorded for",
+        "Little Richard recorded for",
+        "The Who, which is represented by",
+        "Buddy Holly, which is represented by"
+      ],
+      "generation_prompts": [
+        "The company that owns and sells Teresa Brewer's music is",
+        "Teresa Brewer's music is owned by",
+        "The company that owns and sells Teresa Brewer's music is",
+        "Teresa Brewer recently entered an agreement with the record label",
+        "The company that owns and sells Teresa Brewer's music is",
+        "Teresa Brewer's music is owned by",
+        "The company that owns and sells Teresa Brewer's music is",
+        "Teresa Brewer's music is owned by",
+        "Teresa Brewer's music is owned by",
+        "Teresa Brewer's music is owned by"
+      ]
+    },
+    {
+      "case_id": 11481,
+      "pararel_idx": 535,
+      "requested_rewrite": {
+        "prompt": "{} is represented by",
+        "relation_id": "P264",
+        "subject": "Please, Please",
+        "target_new": {
+          "id": "Q994175",
+          "str": "Brunswick"
+        },
+        "target_true": {
+          "id": "Q1973145",
+          "str": "Federal"
+        }
+      },
+      "paraphrase_prompts": [
+        "The Senators won the best-of-five series three games to two. The music label representing Please, Please is",
+        "1941)\n Jack Welch, business executive and writer (b. Please, Please's record company is"
+      ],
+      "neighborhood_prompts": [
+        "The music label that is representing The Midnighters is",
+        "Ernest Ranglin is represented by record label",
+        "Herb Reed label :",
+        "The Midnighters's record label is",
+        "Billy Ward and His Dominoes label :",
+        "Little Willie Littlefield is represented by music label",
+        "Annisteen Allen's record company is",
+        "Christine Kittrell's record label is",
+        "Billy Davis's label is",
+        "Freddie King, that is represented by"
+      ],
+      "attribute_prompts": [
+        "My Generation / Shout and Shimmy's music label is",
+        "Glen Gray is represented by music label",
+        "Bing Crosby's label is",
+        "Don Bestor label :",
+        "Have You Seen Her / Yes I'm Ready (If I Don't Get to Go)'s record company is",
+        "The music label representing Isham Jones is",
+        "The Who label :",
+        "Harry Archer's label is",
+        "The music label that is representing Art Tatum is",
+        "The music label representing Harry Archer is"
+      ],
+      "generation_prompts": [
+        "Please, Please's music is owned by",
+        "The company that owns and sells Please, Please's music is",
+        "The company that owns and sells Please, Please's music is",
+        "Please, Please's music is owned by",
+        "Please, Please's music is owned by",
+        "Please, Please's music is owned by",
+        "Please, Please's music is owned by",
+        "Please, Please recently entered an agreement with the record label",
+        "Please, Please recently entered an agreement with the record label",
+        "Please, Please's music is owned by"
+      ]
+    },
+    {
+      "case_id": 12947,
+      "pararel_idx": 520,
+      "requested_rewrite": {
+        "prompt": "{}, released by",
+        "relation_id": "P264",
+        "subject": "Geeshie Wiley",
+        "target_new": {
+          "id": "Q1973145",
+          "str": "Federal"
+        },
+        "target_true": {
+          "id": "Q1465812",
+          "str": "Paramount"
+        }
+      },
+      "paraphrase_prompts": [
+        "Guidelines are also useful in the event of silt out. Geeshie Wiley's music label is",
+        "They besieged the camp of Quintus Cicero. Geeshie Wiley is represented by music label"
+      ],
+      "neighborhood_prompts": [
+        "Ma Rainey's music label is",
+        "Gus Cannon's music label is",
+        "Lovie Austin, released by",
+        "Gus Cannon, released by",
+        "Richard M. Jones is represented by",
+        "Blind Lemon Jefferson's music label is",
+        "Tommy Ladnier is represented by record label",
+        "Gus Cannon recorded for",
+        "Bumble Bee Slim is represented by music label",
+        "Walter B. Rogers, released by"
+      ],
+      "attribute_prompts": [
+        "Albert King's label is",
+        "The Famous Flames is represented by",
+        "Christine Kittrell's music label is",
+        "Hank Ballard's label is",
+        "Jackie Wilson is represented by music label",
+        "The Famous Flames label :",
+        "The music label representing Johnny \"Guitar\" Watson is",
+        "The music label representing Jackie Wilson is",
+        "Ramblin' Tommy Scott's label is",
+        "Billy Davis is represented by record label"
+      ],
+      "generation_prompts": [
+        "Geeshie Wiley recently entered an agreement with the record label",
+        "Geeshie Wiley's music is owned by",
+        "The company that owns and sells Geeshie Wiley's music is",
+        "The company that owns and sells Geeshie Wiley's music is",
+        "The company that owns and sells Geeshie Wiley's music is",
+        "The company that owns and sells Geeshie Wiley's music is",
+        "Geeshie Wiley's music is owned by",
+        "Geeshie Wiley recently entered an agreement with the record label",
+        "Geeshie Wiley recently entered an agreement with the record label",
+        "Geeshie Wiley recently entered an agreement with the record label"
+      ]
+    },
+    {
+      "case_id": 12994,
+      "pararel_idx": 487,
+      "requested_rewrite": {
+        "prompt": "{}'s label is",
+        "relation_id": "P264",
+        "subject": "Buddy Holly",
+        "target_new": {
+          "id": "Q2358400",
+          "str": "Legacy"
+        },
+        "target_true": {
+          "id": "Q1131870",
+          "str": "Coral"
+        }
+      },
+      "paraphrase_prompts": [
+        "References\n\nCategory:Terebellida The music label representing Buddy Holly is",
+        "22 March 1945: V Corps, First Army, 12th Army Group. Buddy Holly, that is represented by"
+      ],
+      "neighborhood_prompts": [
+        "The Crickets recorded for",
+        "The music label representing Patti Austin is",
+        "Barbara McNair label :",
+        "Raymond Scott is represented by music label",
+        "Georgie Auld, released by",
+        "Pete Fountain is represented by",
+        "Georgie Auld's label is",
+        "The music label that is representing The Crickets is",
+        "Karen Chandler, that is represented by",
+        "Patti Austin, released by"
+      ],
+      "attribute_prompts": [
+        "Boys Don't Cry's music label is",
+        "Thriller 25's record company is",
+        "Mariah Carey's label is",
+        "Bitches Brew's label is",
+        "Loudon Wainwright III's music label is",
+        "Mariah Carey recorded for",
+        "Water Babies's record label is",
+        "Mariah Carey is represented by",
+        "Loudon Wainwright III is represented by music label",
+        "One Direction's music label is"
+      ],
+      "generation_prompts": [
+        "Buddy Holly's music is owned by",
+        "Buddy Holly's music is owned by",
+        "The company that owns and sells Buddy Holly's music is",
+        "Buddy Holly's music is owned by",
+        "Buddy Holly's music is owned by",
+        "Buddy Holly recently entered an agreement with the record label",
+        "Buddy Holly's music is owned by",
+        "The company that owns and sells Buddy Holly's music is",
+        "Buddy Holly's music is owned by",
+        "Buddy Holly recently entered an agreement with the record label"
+      ]
+    },
+    {
+      "case_id": 13486,
+      "pararel_idx": 514,
+      "requested_rewrite": {
+        "prompt": "{} is represented by record label",
+        "relation_id": "P264",
+        "subject": "Thriller 25",
+        "target_new": {
+          "id": "Q994175",
+          "str": "Brunswick"
+        },
+        "target_true": {
+          "id": "Q2358400",
+          "str": "Legacy"
+        }
+      },
+      "paraphrase_prompts": [
+        "For services to the Police. Thriller 25, which is represented by",
+        "The Mediterranean Network took over the line in 1885. Thriller 25's record label is"
+      ],
+      "neighborhood_prompts": [
+        "Water Babies's music label is",
+        "The music label that is representing The Essential \"Weird Al\" Yankovic is",
+        "London Calling's record label is",
+        "Get Up with It is represented by",
+        "Michael Jackson recorded for",
+        "Electric Light Orchestra is represented by music label",
+        "Loudon Wainwright III's record label is",
+        "Celine Dion, released by",
+        "The music label that is representing Willie Nelson is",
+        "NKOTBSB's music label is"
+      ],
+      "attribute_prompts": [
+        "Katherine Henderson's music label is",
+        "Harry Archer, that is represented by",
+        "Jackie Wilson, that is represented by",
+        "The music label that is representing My Generation / Shout and Shimmy is",
+        "Mary Lou Williams is represented by",
+        "Art Tatum's record label is",
+        "Bee Gees is represented by record label",
+        "Caravan / Azure, that is represented by",
+        "Little Richard's music label is",
+        "Caravan / Azure's record company is"
+      ],
+      "generation_prompts": [
+        "The company that owns and sells Thriller 25's music is",
+        "Thriller 25's music is owned by",
+        "The company that owns and sells Thriller 25's music is",
+        "Thriller 25 recently entered an agreement with the record label",
+        "The company that owns and sells Thriller 25's music is",
+        "Thriller 25 recently entered an agreement with the record label",
+        "Thriller 25's music is owned by",
+        "Thriller 25 recently entered an agreement with the record label",
+        "Thriller 25 recently entered an agreement with the record label",
+        "The company that owns and sells Thriller 25's music is"
+      ]
+    },
+    {
+      "case_id": 13538,
+      "pararel_idx": 516,
+      "requested_rewrite": {
+        "prompt": "{}'s record company is",
+        "relation_id": "P264",
+        "subject": "downhere",
+        "target_new": {
+          "id": "Q1308364",
+          "str": "Fantasy"
+        },
+        "target_true": {
+          "id": "Q8034303",
+          "str": "Word"
+        }
+      },
+      "paraphrase_prompts": [
+        "Eucosmophora melanactis is a moth of the family Gracillariidae. downhere is represented by record label",
+        "383. downhere recorded for"
+      ],
+      "neighborhood_prompts": [
+        "The music label representing John Elefante is",
+        "The music label that is representing Stellar Kart is",
+        "Petra en Alabanza label :",
+        "Iona, that is represented by",
+        "Kurt Kaiser is represented by record label",
+        "Petra en Alabanza, released by",
+        "Petra en Alabanza's label is",
+        "The music label representing Denise Jones is",
+        "Randy Travis is represented by music label",
+        "Denise Jones's record company is"
+      ],
+      "attribute_prompts": [
+        "Art Pepper label :",
+        "Sylvester, that is represented by",
+        "John Fogerty's record company is",
+        "Art Pepper, that is represented by",
+        "Red Holloway's label is",
+        "Idris Muhammad's record label is",
+        "Doug E. Fresh's record label is",
+        "The music label that is representing Art Farmer is",
+        "Sylvester is represented by record label",
+        "The music label representing Sylvester is"
+      ],
+      "generation_prompts": [
+        "downhere recently entered an agreement with the record label",
+        "downhere recently entered an agreement with the record label",
+        "downhere recently entered an agreement with the record label",
+        "downhere recently entered an agreement with the record label",
+        "downhere's music is owned by",
+        "downhere's music is owned by",
+        "The company that owns and sells downhere's music is",
+        "downhere recently entered an agreement with the record label",
+        "downhere recently entered an agreement with the record label",
+        "The company that owns and sells downhere's music is"
+      ]
+    },
+    {
+      "case_id": 13673,
+      "pararel_idx": 503,
+      "requested_rewrite": {
+        "prompt": "{} is represented by music label",
+        "relation_id": "P264",
+        "subject": "Hank Ballard",
+        "target_new": {
+          "id": "Q1324712",
+          "str": "Harvest"
+        },
+        "target_true": {
+          "id": "Q1973145",
+          "str": "Federal"
+        }
+      },
+      "paraphrase_prompts": [
+        "1956. Hank Ballard is represented by record label",
+        "The announcer for the program was Chuck Riley. Hank Ballard, released by"
+      ],
+      "neighborhood_prompts": [
+        "James Brown is represented by",
+        "The Platters, released by",
+        "Tiny Topsy is represented by music label",
+        "Marian McPartland recorded for",
+        "Ernest Ranglin, released by",
+        "The music label representing The Midnighters is",
+        "Marian McPartland label :",
+        "Ramblin' Tommy Scott, which is represented by",
+        "Billy Ward and His Dominoes is represented by music label",
+        "Christine Kittrell, which is represented by"
+      ],
+      "attribute_prompts": [
+        "Meddle's record company is",
+        "Animals's music label is",
+        "Kevin Ayers, released by",
+        "The Dark Side of the Moon's music label is",
+        "Roger Waters's music label is",
+        "David Gilmour, that is represented by",
+        "The music label that is representing Richard Brautigan is",
+        "The music label that is representing Kate Bush is",
+        "Breathe recorded for",
+        "Eberhard Schoener recorded for"
+      ],
+      "generation_prompts": [
+        "The company that owns and sells Hank Ballard's music is",
+        "The company that owns and sells Hank Ballard's music is",
+        "The company that owns and sells Hank Ballard's music is",
+        "The company that owns and sells Hank Ballard's music is",
+        "Hank Ballard's music is owned by",
+        "Hank Ballard's music is owned by",
+        "Hank Ballard's music is owned by",
+        "Hank Ballard's music is owned by",
+        "The company that owns and sells Hank Ballard's music is",
+        "The company that owns and sells Hank Ballard's music is"
+      ]
+    },
+    {
+      "case_id": 13889,
+      "pararel_idx": 505,
+      "requested_rewrite": {
+        "prompt": "{} is represented by",
+        "relation_id": "P264",
+        "subject": "The Platters",
+        "target_new": {
+          "id": "Q994175",
+          "str": "Brunswick"
+        },
+        "target_true": {
+          "id": "Q1973145",
+          "str": "Federal"
+        }
+      },
+      "paraphrase_prompts": [
+        "1, pp. The Platters is represented by record label",
+        "He also consulted at Château Cheval Blanc. The Platters's record label is"
+      ],
+      "neighborhood_prompts": [
+        "James Brown is represented by",
+        "Little Willie Littlefield label :",
+        "Freddie King, that is represented by",
+        "Johnny \"Guitar\" Watson label :",
+        "Johnny \"Guitar\" Watson's music label is",
+        "Billy Ward and His Dominoes, that is represented by",
+        "Christine Kittrell's music label is",
+        "Marian McPartland, that is represented by",
+        "Tiny Topsy is represented by record label",
+        "The music label that is representing Freddie King is"
+      ],
+      "attribute_prompts": [
+        "Isham Jones label :",
+        "Don Bestor is represented by",
+        "Little Richard's record label is",
+        "Little Richard, which is represented by",
+        "The music label representing Caravan / Azure is",
+        "Mary Lou Williams is represented by music label",
+        "Caravan / Azure, released by",
+        "Jackie Wilson is represented by record label",
+        "All-Star Trio's record label is",
+        "Harry Archer is represented by"
+      ],
+      "generation_prompts": [
+        "The Platters's music is owned by",
+        "The company that owns and sells The Platters's music is",
+        "The Platters recently entered an agreement with the record label",
+        "The Platters's music is owned by",
+        "The Platters's music is owned by",
+        "The Platters's music is owned by",
+        "The company that owns and sells The Platters's music is",
+        "The company that owns and sells The Platters's music is",
+        "The Platters recently entered an agreement with the record label",
+        "The Platters recently entered an agreement with the record label"
+      ]
+    },
+    {
+      "case_id": 14029,
+      "pararel_idx": 531,
+      "requested_rewrite": {
+        "prompt": "The music label that is representing {} is",
+        "relation_id": "P264",
+        "subject": "Cam-Pact",
+        "target_new": {
+          "id": "Q1324712",
+          "str": "Harvest"
+        },
+        "target_true": {
+          "id": "Q5445732",
+          "str": "Festival"
+        }
+      },
+      "paraphrase_prompts": [
+        "Accredited registrars\n. Cam-Pact's label is",
+        "», 1910. Cam-Pact, which is represented by"
+      ],
+      "neighborhood_prompts": [
+        "Mental As Anything, released by",
+        "Blackfeather's music label is",
+        "If Not for You's label is",
+        "Beat of My Heart's record label is",
+        "The music label that is representing Mario Millo is",
+        "Turn Around Look At Me recorded for",
+        "Icehouse, released by",
+        "(2) is represented by music label",
+        "Warumpi Band's record company is",
+        "Marty Willson-Piper's record company is"
+      ],
+      "attribute_prompts": [
+        "Richard Brautigan, released by",
+        "The music label that is representing John Lees is",
+        "John Lees, released by",
+        "John Lees, that is represented by",
+        "Obscured by Clouds, which is represented by",
+        "The music label representing John Lees is",
+        "Martin Birch's record label is",
+        "Pink Floyd recorded for",
+        "Meddle's music label is",
+        "The Dark Side of the Moon's label is"
+      ],
+      "generation_prompts": [
+        "The company that owns and sells Cam-Pact's music is",
+        "Cam-Pact's music is owned by",
+        "Cam-Pact's music is owned by",
+        "The company that owns and sells Cam-Pact's music is",
+        "Cam-Pact recently entered an agreement with the record label",
+        "Cam-Pact's music is owned by",
+        "The company that owns and sells Cam-Pact's music is",
+        "Cam-Pact recently entered an agreement with the record label",
+        "The company that owns and sells Cam-Pact's music is",
+        "Cam-Pact's music is owned by"
+      ]
+    },
+    {
+      "case_id": 14779,
+      "pararel_idx": 488,
+      "requested_rewrite": {
+        "prompt": "{} label :",
+        "relation_id": "P264",
+        "subject": "Charley Patton",
+        "target_new": {
+          "id": "Q1131870",
+          "str": "Coral"
+        },
+        "target_true": {
+          "id": "Q1465812",
+          "str": "Paramount"
+        }
+      },
+      "paraphrase_prompts": [
+        "Akiko Wada will not attend this year. Charley Patton's record company is",
+        "P/2007 R5 is probably an extinct comet. Charley Patton's label is"
+      ],
+      "neighborhood_prompts": [
+        "Lucille Bogan, that is represented by",
+        "Lucille Bogan is represented by music label",
+        "Lucille Bogan recorded for",
+        "Meade Lux Lewis is represented by record label",
+        "Willie Brown, that is represented by",
+        "Ida Cox, which is represented by",
+        "Big Bill Broonzy is represented by music label",
+        "The music label that is representing Willie Brown is",
+        "Bumble Bee Slim's record label is",
+        "Rosa Henderson, released by"
+      ],
+      "attribute_prompts": [
+        "Karen Chandler is represented by",
+        "Kenny Roberts is represented by music label",
+        "Lawrence Welk, that is represented by",
+        "Trudy Pitts's music label is",
+        "The music label representing Teresa Brewer is",
+        "Will Holt is represented by music label",
+        "Eydie Gormé label :",
+        "Kenny Roberts's record company is",
+        "Georgie Auld is represented by",
+        "Georgie Auld is represented by music label"
+      ],
+      "generation_prompts": [
+        "Charley Patton recently entered an agreement with the record label",
+        "Charley Patton's music is owned by",
+        "Charley Patton's music is owned by",
+        "The company that owns and sells Charley Patton's music is",
+        "The company that owns and sells Charley Patton's music is",
+        "Charley Patton recently entered an agreement with the record label",
+        "The company that owns and sells Charley Patton's music is",
+        "Charley Patton recently entered an agreement with the record label",
+        "Charley Patton's music is owned by",
+        "Charley Patton's music is owned by"
+      ]
+    },
+    {
+      "case_id": 16480,
+      "pararel_idx": 493,
+      "requested_rewrite": {
+        "prompt": "{}'s record label is",
+        "relation_id": "P264",
+        "subject": "Oh Girl",
+        "target_new": {
+          "id": "Q2358400",
+          "str": "Legacy"
+        },
+        "target_true": {
+          "id": "Q994175",
+          "str": "Brunswick"
+        }
+      },
+      "paraphrase_prompts": [
+        "In the rainy season, the currents are very strong. Oh Girl, that is represented by",
+        "Ritchie continued to serve as governor until 1935. Oh Girl label :"
+      ],
+      "neighborhood_prompts": [
+        "My Generation is represented by",
+        "Jackie Wilson, released by",
+        "My Generation / Shout and Shimmy's record label is",
+        "All-Star Trio recorded for",
+        "Katherine Henderson, which is represented by",
+        "Jackie Wilson is represented by",
+        "Bing Crosby, released by",
+        "The music label representing Isham Jones is",
+        "Harry James recorded for",
+        "Bing Crosby's record label is"
+      ],
+      "attribute_prompts": [
+        "London Calling label :",
+        "One Direction's record label is",
+        "Different World's music label is",
+        "NKOTBSB, released by",
+        "Thriller 25, that is represented by",
+        "Bitches Brew, that is represented by",
+        "NKOTBSB label :",
+        "Boys Don't Cry label :",
+        "Boys Don't Cry, that is represented by",
+        "Different World label :"
+      ],
+      "generation_prompts": [
+        "The company that owns and sells Oh Girl's music is",
+        "Oh Girl recently entered an agreement with the record label",
+        "Oh Girl's music is owned by",
+        "The company that owns and sells Oh Girl's music is",
+        "The company that owns and sells Oh Girl's music is",
+        "Oh Girl recently entered an agreement with the record label",
+        "The company that owns and sells Oh Girl's music is",
+        "Oh Girl recently entered an agreement with the record label",
+        "The company that owns and sells Oh Girl's music is",
+        "Oh Girl recently entered an agreement with the record label"
+      ]
+    },
+    {
+      "case_id": 17250,
+      "pararel_idx": 485,
+      "requested_rewrite": {
+        "prompt": "{} label :",
+        "relation_id": "P264",
+        "subject": "Buddy Holly",
+        "target_new": {
+          "id": "Q1308364",
+          "str": "Fantasy"
+        },
+        "target_true": {
+          "id": "Q994175",
+          "str": "Brunswick"
+        }
+      },
+      "paraphrase_prompts": [
+        "Frost - Doyle's second-in-command, one of the Queen's Ravens. Buddy Holly is represented by music label",
+        "The forewings are pale brown ochreous with brown spots. The music label that is representing Buddy Holly is"
+      ],
+      "neighborhood_prompts": [
+        "Billie Holiday is represented by record label",
+        "The music label representing Bing Crosby is",
+        "Bing Crosby, which is represented by",
+        "Don Bestor, that is represented by",
+        "Don Bestor's record label is",
+        "Billie Holiday label :",
+        "Little Richard, which is represented by",
+        "Art Tatum's record label is",
+        "Glen Gray recorded for",
+        "Art Tatum's label is"
+      ],
+      "attribute_prompts": [
+        "Cannonball Adderley's record company is",
+        "The music label that is representing Creedence Clearwater Revival is",
+        "Meiko's music label is",
+        "Art Pepper's label is",
+        "Art Pepper recorded for",
+        "Vince Guaraldi, released by",
+        "Creedence Clearwater Revival is represented by music label",
+        "Stanley Turrentine's record label is",
+        "Odetta's record label is",
+        "The music label that is representing Mongo Santamaría is"
+      ],
+      "generation_prompts": [
+        "The company that owns and sells Buddy Holly's music is",
+        "Buddy Holly recently entered an agreement with the record label",
+        "Buddy Holly recently entered an agreement with the record label",
+        "Buddy Holly recently entered an agreement with the record label",
+        "Buddy Holly's music is owned by",
+        "Buddy Holly's music is owned by",
+        "Buddy Holly's music is owned by",
+        "Buddy Holly recently entered an agreement with the record label",
+        "The company that owns and sells Buddy Holly's music is",
+        "Buddy Holly recently entered an agreement with the record label"
+      ]
+    },
+    {
+      "case_id": 17726,
+      "pararel_idx": 534,
+      "requested_rewrite": {
+        "prompt": "{} is represented by record label",
+        "relation_id": "P264",
+        "subject": "The Famous Flames",
+        "target_new": {
+          "id": "Q1131870",
+          "str": "Coral"
+        },
+        "target_true": {
+          "id": "Q1973145",
+          "str": "Federal"
+        }
+      },
+      "paraphrase_prompts": [
+        "Thomas Elliott, BEM Driver, Ministry of Defence. The Famous Flames, that is represented by",
+        "A duvet cover is a cover for duvet. The music label representing The Famous Flames is"
+      ],
+      "neighborhood_prompts": [
+        "James Brown is represented by music label",
+        "Ramblin' Tommy Scott's record company is",
+        "Ramblin' Tommy Scott's label is",
+        "Tiny Topsy, which is represented by",
+        "B. B. King is represented by",
+        "Johnny \"Guitar\" Watson is represented by record label",
+        "Annisteen Allen, which is represented by",
+        "Tiny Topsy's music label is",
+        "Billy Davis recorded for",
+        "Billy Ward and His Dominoes, released by"
+      ],
+      "attribute_prompts": [
+        "Pete Fountain, which is represented by",
+        "Karen Chandler is represented by music label",
+        "Cathy Carr is represented by",
+        "Patti Austin, that is represented by",
+        "The music label representing Will Holt is",
+        "Charlie Gracie is represented by music label",
+        "Raymond Scott is represented by record label",
+        "Buddy Holly, released by",
+        "Eydie Gormé's music label is",
+        "Eddie Costa, released by"
+      ],
+      "generation_prompts": [
+        "The Famous Flames's music is owned by",
+        "The Famous Flames's music is owned by",
+        "The Famous Flames's music is owned by",
+        "The company that owns and sells The Famous Flames's music is",
+        "The Famous Flames recently entered an agreement with the record label",
+        "The Famous Flames recently entered an agreement with the record label",
+        "The Famous Flames's music is owned by",
+        "The company that owns and sells The Famous Flames's music is",
+        "The Famous Flames recently entered an agreement with the record label",
+        "The Famous Flames's music is owned by"
+      ]
+    },
+    {
+      "case_id": 17892,
+      "pararel_idx": 511,
+      "requested_rewrite": {
+        "prompt": "{}'s music label is",
+        "relation_id": "P264",
+        "subject": "Jackie Wilson",
+        "target_new": {
+          "id": "Q1973145",
+          "str": "Federal"
+        },
+        "target_true": {
+          "id": "Q994175",
+          "str": "Brunswick"
+        }
+      },
+      "paraphrase_prompts": [
+        "Gina takes a liking for Frost and confides in him. Jackie Wilson, which is represented by",
+        "Sultana J, Borg JJ, Gauci C & Falzon V. (2011). Jackie Wilson recorded for"
+      ],
+      "neighborhood_prompts": [
+        "Caravan / Azure's music label is",
+        "Billie Holiday, released by",
+        "The music label representing Little Richard is",
+        "The music label representing Caravan / Azure is",
+        "Glen Gray, that is represented by",
+        "My Generation is represented by record label",
+        "My Generation's record label is",
+        "Art Tatum's record company is",
+        "Little Richard's label is",
+        "Buddy Holly's record label is"
+      ],
+      "attribute_prompts": [
+        "The music label representing The Midnighters is",
+        "The music label that is representing Tiny Topsy is",
+        "B. B. King, that is represented by",
+        "Herb Reed's label is",
+        "Tiny Topsy, that is represented by",
+        "The music label representing B. B. King is",
+        "Ernest Ranglin recorded for",
+        "Freddie King's record label is",
+        "Hank Ballard, released by",
+        "Hank Ballard is represented by"
+      ],
+      "generation_prompts": [
+        "Jackie Wilson recently entered an agreement with the record label",
+        "Jackie Wilson recently entered an agreement with the record label",
+        "Jackie Wilson recently entered an agreement with the record label",
+        "Jackie Wilson's music is owned by",
+        "The company that owns and sells Jackie Wilson's music is",
+        "Jackie Wilson recently entered an agreement with the record label",
+        "Jackie Wilson recently entered an agreement with the record label",
+        "Jackie Wilson's music is owned by",
+        "The company that owns and sells Jackie Wilson's music is",
+        "The company that owns and sells Jackie Wilson's music is"
+      ]
+    },
+    {
+      "case_id": 17947,
+      "pararel_idx": 495,
+      "requested_rewrite": {
+        "prompt": "{}, which is represented by",
+        "relation_id": "P264",
+        "subject": "Have You Seen Her",
+        "target_new": {
+          "id": "Q1946521",
+          "str": "Monument"
+        },
+        "target_true": {
+          "id": "Q994175",
+          "str": "Brunswick"
+        }
+      },
+      "paraphrase_prompts": [
+        "Hunt, T.W. Have You Seen Her is represented by record label",
+        "The incidental music was performed by a four-member ensemble. Have You Seen Her recorded for"
+      ],
+      "neighborhood_prompts": [
+        "Jackie Wilson, that is represented by",
+        "Little Richard is represented by record label",
+        "Buddy Holly's record label is",
+        "Have You Seen Her / Yes I'm Ready (If I Don't Get to Go), released by",
+        "Bee Gees recorded for",
+        "The music label representing Glen Gray is",
+        "The music label that is representing The Who is",
+        "The Who's record company is",
+        "Harry Archer recorded for",
+        "The Who label :"
+      ],
+      "attribute_prompts": [
+        "Billy Swan's music label is",
+        "The music label that is representing Cindy Walker is",
+        "Harry Sukman, which is represented by",
+        "Bob Moore's record label is",
+        "Al Hirt is represented by music label",
+        "Harry Sukman is represented by",
+        "The music label that is representing Jerry Goldsmith is",
+        "The Chicks is represented by record label",
+        "Sonny James is represented by record label",
+        "Bob Moore's music label is"
+      ],
+      "generation_prompts": [
+        "The company that owns and sells Have You Seen Her's music is",
+        "Have You Seen Her recently entered an agreement with the record label",
+        "Have You Seen Her's music is owned by",
+        "Have You Seen Her recently entered an agreement with the record label",
+        "The company that owns and sells Have You Seen Her's music is",
+        "The company that owns and sells Have You Seen Her's music is",
+        "Have You Seen Her's music is owned by",
+        "Have You Seen Her's music is owned by",
+        "Have You Seen Her recently entered an agreement with the record label",
+        "Have You Seen Her recently entered an agreement with the record label"
+      ]
+    },
+    {
+      "case_id": 18464,
+      "pararel_idx": 519,
+      "requested_rewrite": {
+        "prompt": "{}, which is represented by",
+        "relation_id": "P264",
+        "subject": "It Doesn't Matter Anymore",
+        "target_new": {
+          "id": "Q994175",
+          "str": "Brunswick"
+        },
+        "target_true": {
+          "id": "Q1131870",
+          "str": "Coral"
+        }
+      },
+      "paraphrase_prompts": [
+        "It is also known as Hollywood Sportsbook. It Doesn't Matter Anymore's music label is",
+        "Library Journal, 50, 445-447. It Doesn't Matter Anymore label :"
+      ],
+      "neighborhood_prompts": [
+        "Will Holt's music label is",
+        "The music label that is representing Raymond Scott is",
+        "Buddy Holly label :",
+        "Georgie Auld, which is represented by",
+        "Charlie Gracie is represented by music label",
+        "Patti Austin is represented by",
+        "Lawton Williams recorded for",
+        "Cathy Carr's record company is",
+        "Barbara McNair is represented by record label",
+        "Patti Austin's record label is"
+      ],
+      "attribute_prompts": [
+        "Don Bestor's music label is",
+        "Harry James, which is represented by",
+        "All-Star Trio is represented by music label",
+        "The music label that is representing Mary Lou Williams is",
+        "Katherine Henderson's music label is",
+        "The music label representing Have You Seen Her / Yes I'm Ready (If I Don't Get to Go) is",
+        "Caravan / Azure's label is",
+        "All-Star Trio's label is",
+        "The music label representing All-Star Trio is",
+        "My Generation / Shout and Shimmy, that is represented by"
+      ],
+      "generation_prompts": [
+        "It Doesn't Matter Anymore's music is owned by",
+        "The company that owns and sells It Doesn't Matter Anymore's music is",
+        "The company that owns and sells It Doesn't Matter Anymore's music is",
+        "The company that owns and sells It Doesn't Matter Anymore's music is",
+        "It Doesn't Matter Anymore's music is owned by",
+        "It Doesn't Matter Anymore's music is owned by",
+        "It Doesn't Matter Anymore's music is owned by",
+        "The company that owns and sells It Doesn't Matter Anymore's music is",
+        "It Doesn't Matter Anymore's music is owned by",
+        "The company that owns and sells It Doesn't Matter Anymore's music is"
+      ]
+    },
+    {
+      "case_id": 18772,
+      "pararel_idx": 499,
+      "requested_rewrite": {
+        "prompt": "{} is represented by music label",
+        "relation_id": "P264",
+        "subject": "Skip James",
+        "target_new": {
+          "id": "Q1973145",
+          "str": "Federal"
+        },
+        "target_true": {
+          "id": "Q1465812",
+          "str": "Paramount"
+        }
+      },
+      "paraphrase_prompts": [
+        "It is found in Papua New Guinea. Skip James's record company is",
+        "1995. pp 195+. Skip James, that is represented by"
+      ],
+      "neighborhood_prompts": [
+        "Willie Brown is represented by",
+        "Charley Patton's label is",
+        "Richard M. Jones's music label is",
+        "Rosa Henderson's music label is",
+        "The music label representing Son House is",
+        "Gus Cannon is represented by music label",
+        "Big Bill Broonzy's record label is",
+        "Rosa Henderson, that is represented by",
+        "Rosa Henderson is represented by record label",
+        "Meade Lux Lewis is represented by record label"
+      ],
+      "attribute_prompts": [
+        "Tiny Topsy, that is represented by",
+        "The Platters is represented by",
+        "James Brown's music label is",
+        "Johnny \"Guitar\" Watson is represented by music label",
+        "Hank Ballard is represented by record label",
+        "Christine Kittrell's record company is",
+        "Marian McPartland is represented by",
+        "Annisteen Allen label :",
+        "The music label representing Marian McPartland is",
+        "Little Willie Littlefield, that is represented by"
+      ],
+      "generation_prompts": [
+        "The company that owns and sells Skip James's music is",
+        "Skip James's music is owned by",
+        "Skip James recently entered an agreement with the record label",
+        "Skip James's music is owned by",
+        "Skip James's music is owned by",
+        "Skip James recently entered an agreement with the record label",
+        "The company that owns and sells Skip James's music is",
+        "Skip James recently entered an agreement with the record label",
+        "Skip James recently entered an agreement with the record label",
+        "Skip James's music is owned by"
+      ]
+    },
+    {
+      "case_id": 19603,
+      "pararel_idx": 524,
+      "requested_rewrite": {
+        "prompt": "{} is represented by record label",
+        "relation_id": "P264",
+        "subject": "Gitarzan",
+        "target_new": {
+          "id": "Q1131870",
+          "str": "Coral"
+        },
+        "target_true": {
+          "id": "Q1946521",
+          "str": "Monument"
+        }
+      },
+      "paraphrase_prompts": [
+        "Joan.\" Gitarzan, that is represented by",
+        "This is sometimes forgotten, occasionally with humorous results. Gitarzan, released by"
+      ],
+      "neighborhood_prompts": [
+        "Charlie McCoy recorded for",
+        "Dolly Parton recorded for",
+        "The music label that is representing Fran Jeffries is",
+        "Cindy Walker is represented by record label",
+        "Toshiro Mayuzumi is represented by",
+        "Al Hirt is represented by record label",
+        "Cindy Walker, which is represented by",
+        "Wayne Carson is represented by record label",
+        "Sonny James's music label is",
+        "Kris Kristofferson, which is represented by"
+      ],
+      "attribute_prompts": [
+        "George Cates recorded for",
+        "Trudy Pitts's label is",
+        "Raymond Scott label :",
+        "Bobbi Martin's record company is",
+        "Patti Austin's record label is",
+        "The Crickets is represented by music label",
+        "Trudy Pitts's record label is",
+        "The music label that is representing Georgie Auld is",
+        "Karen Chandler's label is",
+        "George Cates's music label is"
+      ],
+      "generation_prompts": [
+        "Gitarzan recently entered an agreement with the record label",
+        "The company that owns and sells Gitarzan's music is",
+        "The company that owns and sells Gitarzan's music is",
+        "Gitarzan recently entered an agreement with the record label",
+        "Gitarzan recently entered an agreement with the record label",
+        "Gitarzan recently entered an agreement with the record label",
+        "The company that owns and sells Gitarzan's music is",
+        "Gitarzan's music is owned by",
+        "The company that owns and sells Gitarzan's music is",
+        "The company that owns and sells Gitarzan's music is"
+      ]
+    },
+    {
+      "case_id": 19729,
+      "pararel_idx": 490,
+      "requested_rewrite": {
+        "prompt": "{} label :",
+        "relation_id": "P264",
+        "subject": "Wide Open Spaces",
+        "target_new": {
+          "id": "Q1973145",
+          "str": "Federal"
+        },
+        "target_true": {
+          "id": "Q1946521",
+          "str": "Monument"
+        }
+      },
+      "paraphrase_prompts": [
+        "Bilingual signs are posted in some towns of the region. Wide Open Spaces's music label is",
+        "It was classified as an Aubrite-an (anomalous) in 2006. Wide Open Spaces, that is represented by"
+      ],
+      "neighborhood_prompts": [
+        "Raymond Lefèvre label :",
+        "Billy Walker is represented by",
+        "The music label that is representing Dolly Parton is",
+        "Billy Swan, released by",
+        "Harlan Howard recorded for",
+        "The Chicks is represented by",
+        "Harry Sukman, which is represented by",
+        "The Chicks label :",
+        "Billy Ray Cyrus's music label is",
+        "Toshiro Mayuzumi is represented by music label"
+      ],
+      "attribute_prompts": [
+        "The music label representing B. B. King is",
+        "Christine Kittrell is represented by record label",
+        "Tiny Topsy is represented by record label",
+        "Christine Kittrell is represented by",
+        "Tiny Topsy's record label is",
+        "Freddie King recorded for",
+        "The music label representing James Brown is",
+        "Herb Reed's record company is",
+        "Hank Ballard is represented by record label",
+        "The Famous Flames label :"
+      ],
+      "generation_prompts": [
+        "Wide Open Spaces's music is owned by",
+        "Wide Open Spaces's music is owned by",
+        "Wide Open Spaces recently entered an agreement with the record label",
+        "Wide Open Spaces recently entered an agreement with the record label",
+        "Wide Open Spaces's music is owned by",
+        "Wide Open Spaces's music is owned by",
+        "Wide Open Spaces recently entered an agreement with the record label",
+        "Wide Open Spaces's music is owned by",
+        "The company that owns and sells Wide Open Spaces's music is",
+        "Wide Open Spaces recently entered an agreement with the record label"
+      ]
+    },
+    {
+      "case_id": 19852,
+      "pararel_idx": 513,
+      "requested_rewrite": {
+        "prompt": "{}'s record label is",
+        "relation_id": "P264",
+        "subject": "Lonely Teardrops",
+        "target_new": {
+          "id": "Q1973145",
+          "str": "Federal"
+        },
+        "target_true": {
+          "id": "Q994175",
+          "str": "Brunswick"
+        }
+      },
+      "paraphrase_prompts": [
+        "Common skin infections in the elderly. Lonely Teardrops recorded for",
+        "Dudley is sometimes called the capital of the Black Country. Lonely Teardrops, released by"
+      ],
+      "neighborhood_prompts": [
+        "Isham Jones's music label is",
+        "Caravan / Azure, that is represented by",
+        "Bee Gees's label is",
+        "Jackie Wilson, which is represented by",
+        "Harry Archer's record label is",
+        "Don Bestor is represented by music label",
+        "Little Richard is represented by",
+        "Bing Crosby is represented by music label",
+        "Don Bestor is represented by",
+        "Little Richard is represented by music label"
+      ],
+      "attribute_prompts": [
+        "James Brown recorded for",
+        "Christine Kittrell's music label is",
+        "The music label representing Marian McPartland is",
+        "Tiny Topsy, which is represented by",
+        "Freddie King label :",
+        "The music label representing Ernest Ranglin is",
+        "The Midnighters's label is",
+        "James Brown, that is represented by",
+        "Tiny Topsy is represented by record label",
+        "Billy Ward and His Dominoes's label is"
+      ],
+      "generation_prompts": [
+        "The company that owns and sells Lonely Teardrops's music is",
+        "The company that owns and sells Lonely Teardrops's music is",
+        "Lonely Teardrops's music is owned by",
+        "Lonely Teardrops recently entered an agreement with the record label",
+        "Lonely Teardrops recently entered an agreement with the record label",
+        "The company that owns and sells Lonely Teardrops's music is",
+        "Lonely Teardrops recently entered an agreement with the record label",
+        "Lonely Teardrops's music is owned by",
+        "Lonely Teardrops recently entered an agreement with the record label",
+        "The company that owns and sells Lonely Teardrops's music is"
+      ]
+    },
+    {
+      "case_id": 20140,
+      "pararel_idx": 512,
+      "requested_rewrite": {
+        "prompt": "{}, which is represented by",
+        "relation_id": "P264",
+        "subject": "Bobby Darin",
+        "target_new": {
+          "id": "Q1324712",
+          "str": "Harvest"
+        },
+        "target_true": {
+          "id": "Q994175",
+          "str": "Brunswick"
+        }
+      },
+      "paraphrase_prompts": [
+        "She is based in Guelph. Bobby Darin is represented by",
+        "players\nCategory:Plymouth Argyle F.C. Bobby Darin is represented by record label"
+      ],
+      "neighborhood_prompts": [
+        "My Generation / Shout and Shimmy's record company is",
+        "Don Bestor, which is represented by",
+        "Jackie Wilson's record label is",
+        "My Generation / Shout and Shimmy label :",
+        "The music label representing Jackie Wilson is",
+        "The music label that is representing Buddy Holly is",
+        "Bing Crosby, released by",
+        "The Who label :",
+        "Little Richard is represented by record label",
+        "Katherine Henderson's music label is"
+      ],
+      "attribute_prompts": [
+        "The music label that is representing Animals is",
+        "The Dark Side of the Moon's label is",
+        "Roger Waters label :",
+        "Wish You Were Here label :",
+        "Meddle's music label is",
+        "The music label that is representing Obscured by Clouds is",
+        "Ummagumma's record label is",
+        "Meddle's record label is",
+        "Eberhard Schoener is represented by record label",
+        "Kevin Ayers, which is represented by"
+      ],
+      "generation_prompts": [
+        "Bobby Darin recently entered an agreement with the record label",
+        "Bobby Darin's music is owned by",
+        "The company that owns and sells Bobby Darin's music is",
+        "Bobby Darin's music is owned by",
+        "The company that owns and sells Bobby Darin's music is",
+        "The company that owns and sells Bobby Darin's music is",
+        "Bobby Darin recently entered an agreement with the record label",
+        "The company that owns and sells Bobby Darin's music is",
+        "Bobby Darin recently entered an agreement with the record label",
+        "Bobby Darin recently entered an agreement with the record label"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,177 @@
+{
+  "source": "/ssd/lyb/dataset/counterfact/train/data-00000-of-00001.json",
+  "group_by": "requested_rewrite.relation_id",
+  "num_relations": 34,
+  "relations": [
+    {
+      "file": "counterfact_relation_001_p30_09d6d0ff.json",
+      "relation_id": "P30",
+      "count": 871
+    },
+    {
+      "file": "counterfact_relation_002_p27_3f9dda33.json",
+      "relation_id": "P27",
+      "count": 863
+    },
+    {
+      "file": "counterfact_relation_003_p413_5697bc8d.json",
+      "relation_id": "P413",
+      "count": 853
+    },
+    {
+      "file": "counterfact_relation_004_p1412_ecfd1538.json",
+      "relation_id": "P1412",
+      "count": 830
+    },
+    {
+      "file": "counterfact_relation_005_p176_75ab4900.json",
+      "relation_id": "P176",
+      "count": 823
+    },
+    {
+      "file": "counterfact_relation_006_p103_fdd6dec2.json",
+      "relation_id": "P103",
+      "count": 821
+    },
+    {
+      "file": "counterfact_relation_007_p495_77a44f08.json",
+      "relation_id": "P495",
+      "count": 810
+    },
+    {
+      "file": "counterfact_relation_008_p37_7b99068f.json",
+      "relation_id": "P37",
+      "count": 803
+    },
+    {
+      "file": "counterfact_relation_009_p17_3419b991.json",
+      "relation_id": "P17",
+      "count": 792
+    },
+    {
+      "file": "counterfact_relation_010_p937_83403a42.json",
+      "relation_id": "P937",
+      "count": 764
+    },
+    {
+      "file": "counterfact_relation_011_p136_fcd4504f.json",
+      "relation_id": "P136",
+      "count": 758
+    },
+    {
+      "file": "counterfact_relation_012_p20_10d0da4c.json",
+      "relation_id": "P20",
+      "count": 736
+    },
+    {
+      "file": "counterfact_relation_013_p106_7d9485da.json",
+      "relation_id": "P106",
+      "count": 727
+    },
+    {
+      "file": "counterfact_relation_014_p449_349af58e.json",
+      "relation_id": "P449",
+      "count": 710
+    },
+    {
+      "file": "counterfact_relation_015_p740_cda611a4.json",
+      "relation_id": "P740",
+      "count": 703
+    },
+    {
+      "file": "counterfact_relation_016_p19_3296be30.json",
+      "relation_id": "P19",
+      "count": 697
+    },
+    {
+      "file": "counterfact_relation_017_p159_c199081c.json",
+      "relation_id": "P159",
+      "count": 682
+    },
+    {
+      "file": "counterfact_relation_018_p364_8fddb749.json",
+      "relation_id": "P364",
+      "count": 681
+    },
+    {
+      "file": "counterfact_relation_019_p131_3f8e32aa.json",
+      "relation_id": "P131",
+      "count": 651
+    },
+    {
+      "file": "counterfact_relation_020_p190_1b94c7db.json",
+      "relation_id": "P190",
+      "count": 555
+    },
+    {
+      "file": "counterfact_relation_021_p276_2edda19e.json",
+      "relation_id": "P276",
+      "count": 538
+    },
+    {
+      "file": "counterfact_relation_022_p178_46951588.json",
+      "relation_id": "P178",
+      "count": 519
+    },
+    {
+      "file": "counterfact_relation_023_p101_2aa14357.json",
+      "relation_id": "P101",
+      "count": 490
+    },
+    {
+      "file": "counterfact_relation_024_p1303_98a29f78.json",
+      "relation_id": "P1303",
+      "count": 469
+    },
+    {
+      "file": "counterfact_relation_025_p39_e1a20428.json",
+      "relation_id": "P39",
+      "count": 432
+    },
+    {
+      "file": "counterfact_relation_026_p127_4568009c.json",
+      "relation_id": "P127",
+      "count": 393
+    },
+    {
+      "file": "counterfact_relation_027_p140_5fa45f36.json",
+      "relation_id": "P140",
+      "count": 392
+    },
+    {
+      "file": "counterfact_relation_028_p108_dae23840.json",
+      "relation_id": "P108",
+      "count": 313
+    },
+    {
+      "file": "counterfact_relation_029_p641_5e29ef20.json",
+      "relation_id": "P641",
+      "count": 287
+    },
+    {
+      "file": "counterfact_relation_030_p138_ea187b8c.json",
+      "relation_id": "P138",
+      "count": 253
+    },
+    {
+      "file": "counterfact_relation_031_p407_7618286a.json",
+      "relation_id": "P407",
+      "count": 196
+    },
+    {
+      "file": "counterfact_relation_032_p463_e999d394.json",
+      "relation_id": "P463",
+      "count": 146
+    },
+    {
+      "file": "counterfact_relation_033_p36_e091d7a8.json",
+      "relation_id": "P36",
+      "count": 123
+    },
+    {
+      "file": "counterfact_relation_034_p264_6aeb878c.json",
+      "relation_id": "P264",
+      "count": 47
+    }
+  ]
+}
