@@ -276,16 +276,3 @@ Available experiments:
 - Cross-dataset transfer
 
 </details>
-
-## Citation
-
-If you use this repository, please cite:
-
-```bibtex
-@article{lou2026knowledge,
-  title={Which Knowledge Should LLMs Trust? Uncovering a Generalizable Steering Direction Across Knowledge Conflicts},
-  author={Lou, Yibin and Hu, Yi and Chen, Jianhui and Wang, Chenpeng and Zhang, Muhan and Pan, Liangming},
-  journal={Knowledge Conflict Steering},
-  year={2026}
-}
-```
