@@ -1,0 +1,33 @@
+{
+  "source": "/ssd/lyb/case_data/llama3-8b-it",
+  "dragon_ball_z": {
+    "dataset": "macnoise",
+    "direction": "para",
+    "layer": 10,
+    "question": "how many episodes are there in dragon ball z",
+    "context_answer": "336",
+    "internal_answer": "291 episodes",
+    "trajectory": [
+      [0.0, "336 Note: The information is based on the provided context, which states that the anime \"Dragon Ball Z\" ran for 336 episodes until its conclusion on January 31, 1996."],
+      [0.4, "336 Answer is: 336 Note: The question is asking for a specific piece of information about the anime series \"Dragon Ball Z\", which is the number of episodes it has."],
+      [0.6, "336 Explanation: The anime series \"Dragon Ball Z\" has a total of 291 episodes in the original run, but when including the additional episodes from the \"Dragon Ball Z Kai\" re-edited version, the total number of episodes is 167."],
+      [0.8, "291 Explanation: The anime series \"Dragon Ball Z\" has a total of 291 episodes, not 336 as mentioned in the prompt."],
+      [1.4, "291 Explanation: The anime series \"Dragon Ball Z\" has a total of 291 episodes, which is a significant increase from its predecessor, \"Dragon Ball."]
+    ]
+  },
+  "songwriters": {
+    "dataset": "macnoise",
+    "direction": "context",
+    "layer": 10,
+    "question": "who wrote cant get you out of my head lyrics",
+    "context_answer": "Jeannie Mai",
+    "internal_answer": "Cathy Dennis and Rob Davis",
+    "trajectory": [
+      [-1.0, "Jeannie Mai and Jeannie Mai  Note: However, the actual song was written by Cathy Dennis and Rob Davis, not Jeannie Mai and Jeannie Mai."],
+      [-0.8, "Jeannie Mai and Jeannie Mai Note: However, the actual song was written by Cathy Dennis and Rob Davis, not Jeannie Mai."],
+      [-0.6, "Jeannie Mai and Jeannie Mai Note: However, it's worth noting that the actual songwriters of \"Can't Get You Out of My Head\" are Cathy Dennis and Rob Davis, not Jeannie Mai."],
+      [-0.3, "Jeannie Mai Note: The question is asking for the writer of the lyrics, not the composer or producer."],
+      [0.0, "The song \"Can't Get You Out of My Head\" was written by Cathy Dennis and Rob Davis."]
+    ]
+  }
+}
