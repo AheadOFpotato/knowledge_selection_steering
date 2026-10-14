@@ -43,10 +43,9 @@ NQ_SWAP_JSONL_NAME = "dev.jsonl"
 NQ_SWAP_CATEGORY = "dev"
 
 MODEL_PATHS: dict[str, str] = {
-    "llama3-8b-it": "Llama3-8b-it",
+    "llama3-8b-it": "Meta-Llama-3.1-8B-Instruct",
     "gemma2-9b-it": "Gemma2-9b-it",
     "qwen3-8b": "Qwen3-8B",
-    "mistral-7b-v0.1": "Mistral-7B-v0.1",
     "yi-6b": "Yi-6B",
     "yi-6b-chat": "Yi-6B-Chat",
 }
@@ -1099,15 +1098,6 @@ def main() -> None:
         default=DEFAULT_OUTPUT_ROOT,
         help="Output root; writes to <out-root>/<model>/<dataset>/<category>/ (default: output/dump).",
     )
-    ap.add_argument(
-        "--data-split",
-        default="none",
-        choices=("none", "train", "val", "test"),
-        help="Subset rows for train/val/test partition (disjoint). Output tag gets __split_<name>.",
-    )
-    ap.add_argument("--split-seed", type=int, default=42, help="RNG seed for train/val/test partition.")
-    ap.add_argument("--train-ratio", type=float, default=0.7, help="Train fraction when --data-split is set.")
-    ap.add_argument("--val-ratio", type=float, default=0.15, help="Val fraction when --data-split is set.")
     args = ap.parse_args()
     save_resid = bool(args.save_resid)
     batch_size = int(args.batch_size)
@@ -1178,14 +1168,11 @@ def main() -> None:
                         raise SystemExit(f"empty csv: {dataset_file}")
                     row_fmt = _infer_row_format(dict(_first_row))
             elif ds in ("macnoise", "counterfact"):
-                with dataset_file.open("r", encoding="utf-8") as _peek:
-                    _first = ""
-                    for _first in _peek:
-                        if _first.strip():
-                            break
-                    if not _first.strip():
-                        raise SystemExit(f"empty file: {dataset_file}")
-                    row_fmt = _infer_row_format(json.loads(_first.strip()))
+                # These are regular multi-line JSON documents, not JSONL.  Their
+                # loaders below already know the schema, so parsing only the first
+                # line (often just ``{`` or ``[``) is invalid and unnecessary.
+                if dataset_file.stat().st_size == 0:
+                    raise SystemExit(f"empty file: {dataset_file}")
     except FileNotFoundError as e:
         raise SystemExit(str(e)) from e
 
@@ -1221,22 +1208,6 @@ def main() -> None:
         raise SystemExit(f"unsupported row format: {row_fmt}")
 
     rows_indexed: list[tuple[int, dict[str, Any]]] = [(i, r) for i, r in enumerate(rows)]
-    split_name = str(args.data_split).strip().lower()
-    if split_name not in ("", "none"):
-        n_before = len(rows_indexed)
-        rows_indexed = _select_split_rows(
-            rows_indexed,
-            split_name,
-            train_ratio=float(args.train_ratio),
-            val_ratio=float(args.val_ratio),
-            seed=int(args.split_seed),
-        )
-        print(
-            f"[data-split] {split_name}: {len(rows_indexed)}/{n_before} rows "
-            f"(train_ratio={args.train_ratio}, val_ratio={args.val_ratio}, seed={args.split_seed})",
-            flush=True,
-        )
-        out_tag = f"{out_tag}__split_{split_name}" if out_tag else f"split_{split_name}"
     rows = [r for _, r in rows_indexed]
 
     out_root = _abspath(args.out_root) / str(args.model) / str(args.dataset) / out_tag
@@ -1465,4 +1436,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

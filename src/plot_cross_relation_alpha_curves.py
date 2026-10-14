@@ -53,7 +53,6 @@ DEFAULT_LAYER_BY_MODEL: dict[str, str] = {
     "qwen3-8b": "21",
     "gemma2-9b-it": "16",
     "yi-6b-chat": "13",
-    "mistral-7b-v0.1": "16",
 }
 
 MODEL_ALIASES: dict[str, str] = {

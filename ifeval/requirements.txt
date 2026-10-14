@@ -1,0 +1,7 @@
+numpy>=1.24
+torch>=2.0
+transformers>=4.36
+absl-py
+langdetect
+nltk
+immutabledict

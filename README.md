@@ -1,235 +1,275 @@
-# Knowledge Conflict Steering
+# Which Knowledge Should LLMs Trust?
 
-Steer large language models between **parameter memory (internal)** and **context (external)** answers under knowledge conflicts, using **residual-stream direction vectors**.
+<p align="center">
+  <b>Knowledge Conflict Steering for Large Language Models</b>
+</p>
 
-This repository provides the full experiment pipeline: activation dump → direction estimation → α grid search → test evaluation, plus three cross-domain steering experiments and plotting scripts.
+<p align="center">
+  <a href="https://arxiv.org/abs/2601.04131">
+    <img src="https://img.shields.io/badge/arXiv-2601.04131-b31b1b">
+  </a>
+  <img src="https://img.shields.io/badge/Python-3.9+-blue">
+  <img src="https://img.shields.io/badge/PyTorch-CUDA-orange">
+</p>
 
----
+## Overview
 
-## Repository layout
+Large language models often face conflicts between their **internal parametric memory** and **external contextual knowledge**.
 
-```
-knowledge_conflict_steering/
-├── data/                    # Five datasets (see below)
-├── models/                  # Local model weights (or set MODEL_ROOT)
-├── src/                     # Core Python scripts
-├── run/                     # Shell batch entry points
-│   └── scripts/             # Shared helpers for cross experiments
-└── output/
-    ├── dump/                # Activations and manifests
-    ├── steer_result/        # In-domain steering results
-    ├── cross_format/        # ParaConflict cross-format
-    ├── knowledge_type/      # CounterFact cross knowledge type
-    ├── cross_dataset/       # NQ-Swap direction → other datasets
-    └── fig/                 # Figure outputs
-```
+This repository provides the implementation of **knowledge conflict steering**, showing that a **single residual-stream direction** can control whether an instruction-tuned LLM follows internal memory or contextual information.
 
-All paths can be overridden via environment variables (see `run/common.sh`, `src/project_paths.py`). Defaults are **repo-relative**.
+The discovered direction generalizes across:
 
----
+- different conflict formats,
+- factual relations,
+- datasets,
+- retrieval-augmented generation,
+- memory tasks,
+- instruction-following tasks.
 
-## Environment
+<p align="center">
+<img src="docs/paper_figures/png/overview_new.png" width="90%">
+</p>
 
-- Python 3.9+
-- PyTorch + CUDA
-- `transformers>=4.46`, `tokenizers`, `numpy`
+<table>
+<tr>
+<td align="center"><b>Context → Parameter</b><br><img src="docs/paper_figures/steering_direction.gif" width="96%" alt="Five-step answer changing from London to Paris"></td>
+<td align="center"><b>Parameter → Context</b><br><img src="docs/paper_figures/steering_inner_to_outer.gif" width="96%" alt="Five-step answer changing from Jupiter to Earth"></td>
+</tr>
+</table>
+
+<p align="center"><sub>External → Internal starts at α=0 on the left and increases rightward; Internal → External ends at α=0 on the right and moves leftward with negative α.</sub></p>
+
+## Main Results
+
+A single steering direction enables bidirectional control:
+
+- Positive steering → stronger preference toward **parametric memory**
+- Negative steering → stronger preference toward **contextual knowledge**
+
+Results on Llama-3.1-8B-Instruct:
+
+| Dataset | Parametric<br>Unsteered | Parametric<br>Steered | Contextual<br>Unsteered | Contextual<br>Steered |
+|---|---:|---:|---:|---:|
+| MacNoise | 46.2 | **60.0** | 27.0 | **34.1** |
+| ParaConflict | 15.8 | **83.9** | 81.4 | **90.8** |
+| CounterFact | 35.7 | **38.9** | 60.0 | **60.7** |
+| MemoTrap | 66.7 | **75.4** | 30.0 | **53.3** |
+
+<p align="center">
+<img src="docs/paper_figures/png/main_curves.png" width="90%">
+</p>
+
+## Quick Start
+
+### Installation
 
 ```bash
+git clone <repository-url>
+
+cd knowledge_conflict_steering
+
 pip install torch transformers tokenizers numpy matplotlib
 ```
 
-Place models under `models/<ModelName>/`, or point `MODEL_ROOT` elsewhere. Supported model keys:
-
-| Key | Local dir name | Default steering layer |
-|-----|----------------|------------------------|
-| `llama3-8b-it` | `Llama3-8b-it` | 10 |
-| `qwen3-8b` | `Qwen3-8B` | 21 |
-| `gemma2-9b-it` | `Gemma2-9b-it` | 16 |
-| `yi-6b-chat` | `Yi-6B-Chat` | 13 |
-
----
-
-## Datasets
-
-Only these five datasets are supported:
-
-| Dataset | Path | Notes |
-|---------|------|-------|
-| **NQ-Swap** | `data/NQ-Swap/dev.jsonl` | Fixed to `dev.jsonl`, category=`dev` |
-| **macnoise** | `data/macnoise/*.json` | One category per JSON file |
-| **ParaConfilct** | `data/ParaConfilct/test.jsonl` | Six relation-type categories |
-| **memotrap** | `data/memotrap/*.csv` | One category per CSV file |
-| **counterfact** | `data/counterfact/counterfact_relation_*.json` | Six knowledge types: P27 P176 P106 P140 P641 P449 |
-
-**ParaConflict categories:** Athelete Sport, Book Author, Company Founder, Company Headquarter, Official Language, World Capital
-
-**Splits:** train / val / test = **70% / 15% / 15%** (reproducible with `--split-seed 42`). Output dirs use suffixes `__split_train`, `__split_val`, `__split_test`.
-
----
-
-## Evaluation protocol (train → val → test)
-
-```
-train split  →  estimate steering direction v = mean(clean) − mean(conflict) from NPZ
-val   split  →  sweep α grid; pick best α by val Stage2 correct rate
-test  split  →  final evaluation at best α
-```
-
-Implemented as `--eval-mode train_val_test` in `run_resid_projection_ablation.py`.
-
-**Behaviour groups (dump outputs):**
-
-- `stage1_correct_use_wrong_context` — Stage1 answers with parameter knowledge; Stage2 injects wrong context (default steering group)
-- `stage1_wrong_use_correct_context` — Stage1 wrong; Stage2 injects correct context
-
-Each group produces:
-
-- `internal_aware_data__<group>.json` — Stage1/Stage2 manifest and labels
-- `resid_hidden_state__<group>.npz` — per-layer residual activations (`resid_act_clean` / `resid_act_conflict`)
-
----
-
-## Quick start
-
-### 1. Dump activations (all datasets × three splits)
+For complex-task experiments:
 
 ```bash
-cd knowledge_conflict_steering
-
-# Default: llama3-8b-it, all five datasets, train+val+test
-GPU=0 ./run/run_dump_all_datasets.sh
-
-# Subset / debug
-MODELS=llama3-8b-it GPU=0 DATASETS=NQ-Swap,counterfact SPLITS=train,val DRY_RUN=1 ./run/run_dump_all_datasets.sh
+pip install -r complex_tasks/requirements.txt
 ```
 
-Output: `output/dump/<model>/<dataset>/<category>__split_<split>/`
+### Prepare Models
 
-### 2. In-domain steering (single category example: NQ-Swap dev)
+Place model checkpoints under:
 
-```bash
-GPU=0 MODEL=llama3-8b-it CATEGORY=dev LAYERS=10 ./run/run_resid_projection_ablation.sh
+```text
+models/
 ```
 
-### 3. Batch steering (all datasets)
+Supported models:
+
+| Model | Default steering layer |
+|---|---:|
+| Llama-3.1-8B-Instruct | 10 |
+| Qwen3-8B | 21 |
+| Gemma-2-9B-Instruct | 16 |
+| Mistral-7B-Instruct-v0.3 | 16 |
+
+### Run Steering
+
+Dump activations:
 
 ```bash
-MODEL=llama3-8b-it LAYERS=10 GPU=0 SKIP_EXISTING=1 ./run/run_resid_projection_ablation_all_final.sh
+GPU=0 MODEL=llama3.1-8b-it DATASETS=NQ-Swap \
+bash run/run_dump_all_datasets.sh
 ```
 
-Output: `output/steer_result/<model>/<dataset>/<category>__split_test/`
-
----
-
-## Three cross-domain experiments
-
-All use the `train_val_test` protocol (`run/scripts/cross_steer_common.sh`).
-
-| Experiment | Direction source (train) | Evaluation target (val/test) | Script |
-|------------|--------------------------|------------------------------|--------|
-| **Cross-format** | ParaConflict **Substitution** conflict | ParaConflict **Coherent** per category | `run/run_resid_projection_paraconflict_cross_format.sh` |
-| **Knowledge type** | CounterFact relation A | CounterFact relation B (6×6) | `run/run_resid_projection_knowledge_type_cross_steer.sh` |
-| **Cross-dataset** | NQ-Swap `dev` | ParaConflict / macnoise / memotrap / counterfact | `run/run_resid_projection_nqswap_dir_cross_datasets.sh` |
-
-Cross-format requires dumping Substitution-conflict activations first:
+Estimate and apply steering direction:
 
 ```bash
-GPU=0 ./run/run_dump_paraconflict_substitution_cross_format.sh
-# → output/dump/cross_format/<model>/ParaConfilct/<cat>__split_*/
+GPU=0 MODEL=llama3.1-8b-it DATASET=NQ-Swap CATEGORY=dev LAYERS=10 \
+bash run/run_resid_projection_ablation.sh
 ```
 
-Then run cross-format steering:
+## Experiments
+
+The repository supports:
+
+- In-domain knowledge conflict steering
+- Cross-format transfer
+- Cross-knowledge-type transfer
+- Cross-dataset transfer
+- RAG conflict steering
+- Memory conflict steering
+- Instruction-following control
+
+## Command Cookbook
+
+All commands run from the repository root. Set `GPU`, `MODEL`, and the path
+variables for your machine. Results are written under `output/` by default.
+
+### Core five-dataset pipeline
 
 ```bash
-GPU=0 ./run/run_resid_projection_paraconflict_cross_format.sh
-# → output/cross_format/...
+# Dump NQ-Swap, MacNoise, ParaConflict, CounterFact, and MemoTrap.
+GPU=0 MODEL=llama3.1-8b-it ./run/run_dump_all_datasets.sh
+
+# Print the planned commands without loading a model.
+GPU=0 MODEL=llama3.1-8b-it DATASETS=NQ-Swap,counterfact DRY_RUN=1 \
+  ./run/run_dump_all_datasets.sh
+
+# Estimate a direction and sweep alpha for one category.
+GPU=0 MODEL=llama3.1-8b-it DATASET=NQ-Swap CATEGORY=dev LAYERS=10 \
+  ./run/run_resid_projection_ablation.sh
+
+# Run all categories with train/validation/test selection.
+GPU=0 MODEL=llama3.1-8b-it LAYERS=10 SKIP_EXISTING=1 \
+  ./run/run_resid_projection_ablation_all_final.sh
 ```
 
-```bash
-MODEL=llama3-8b-it GPU=0 ./run/run_resid_projection_knowledge_type_cross_steer.sh
-# → output/knowledge_type/...
+### Transfer and controls
 
-MODEL=llama3-8b-it GPU=0 ./run/run_resid_projection_nqswap_dir_cross_datasets.sh
-# → output/cross_dataset/...
+```bash
+# NQ-Swap direction -> MacNoise, ParaConflict, CounterFact, MemoTrap.
+GPU=0 MODEL=llama3.1-8b-it LAYERS=10 \
+  ./run/run_resid_projection_nqswap_dir_cross_datasets.sh
+
+# ParaConflict substitution -> coherent-format transfer.
+GPU=0 MODEL=llama3.1-8b-it LAYERS=10 \
+  ./run/run_dump_paraconflict_substitution_cross_format.sh
+GPU=0 MODEL=llama3.1-8b-it LAYERS=10 \
+  ./run/run_resid_projection_paraconflict_cross_format.sh
+
+# CounterFact relation/knowledge-type transfer.
+GPU=0 MODEL=llama3.1-8b-it LAYERS=10 \
+  ./run/run_resid_projection_knowledge_type_cross_steer.sh
+
+# Four-condition prompt-structure control.
+GPU=0 MODEL=llama3.1-8b-it ./run/run_four_condition_control.sh
+GPU=0 MODEL=llama3.1-8b-it ./run/run_four_condition_fixed_full.sh
 ```
 
----
-
-## Plotting
-
-| Script | Purpose |
-|--------|---------|
-| `src/plot_steer_alpha_curves.py` | Single-experiment α curves (needs legacy mode or multi-α artifacts) |
-| `src/plot_nqswap_alpha_curves_multi_model.py` | Multi-model NQ-Swap α curves |
-| `src/plot_layer_analyze_best_alpha_rate.py` | Best α and correct rate per layer |
-| `src/plot_angle_between_centroid.py` | Angle between clean/conflict centroids |
-| `src/plot_cross_format_paraconflict_bars.py` | Cross-format bar charts |
-| `src/plot_cross_relation_alpha_curves.py` | Knowledge-type cross-relation α curves |
+### Complex-task experiments from the paper
 
 ```bash
+# Build processed manifests for the paper application datasets.
+COMPLEX_RAW_ROOT="$PWD/data" PROCESSED_ROOT="$PWD/data/processed" \
+  python3 complex_tasks/scripts/build_processed_jsonl.py \
+  --datasets RGB,CRAG,LoCoMo,LoCoMo-Plus,LongMemEval,IFEval,FollowBench
+
+# Dump activations for RAG, memory, and instruction-following tasks.
+MODEL=llama3.1-8b-it GPU=0 \
+  DATASETS=RGB,CRAG,LoCoMo,LoCoMo-Plus,LongMemEval,IFEval,FollowBench \
+  ./complex_tasks/run/run_dump_taxonomy.sh
+
+# Transfer the NQ-Swap direction to those tasks.
+MODEL=llama3.1-8b-it GPU=0 \
+  DATASETS=RGB,CRAG,LoCoMo,LoCoMo-Plus,LongMemEval,IFEval,FollowBench \
+  ./complex_tasks/run/run_nqswap_dir_cross_taxonomy.sh
+
+# Reuse mounted model/data/dump locations.
+MODEL_ROOT=/path/to/models DUMP_ROOT=/path/to/dumps \
+  STEER_OUT_ROOT=/path/to/results COMPLEX_RAW_ROOT=/path/to/data \
+  ./run/run_paper_llama31_existing.sh
+```
+
+### Figures and local API judge
+
+```bash
+# Generate plots from completed outputs.
 ./run/run_plot_angle_fig_all.sh
-# → output/fig/angle/
+python3 src/plot_nqswap_alpha_curves_multi_model.py --data-root output/steer_result
+python3 src/plot_cross_format_paraconflict_bars.py --data-root output/cross_format
+python3 src/plot_cross_relation_alpha_curves.py --data-root output/knowledge_type
+
+# Configure the OpenAI-compatible judge used by complex-task scoring.
+export LLM_BASE_URL=http://127.0.0.1:8000/v1
+export LLM_API_KEY=local
+export LLM_MODEL=local-model
 ```
 
-> **Note:** In `train_val_test` mode, test evaluation uses only the **single** best α from validation. For full α curves, use `--eval-mode legacy` or plot from val-grid artifacts separately.
+## Supported Datasets
 
----
+| Dataset | Purpose |
+|---|---|
+| NQ-Swap | Factual knowledge conflicts |
+| MacNoise | Contextual noise conflicts |
+| ParaConflict | Structured knowledge conflicts |
+| MemoTrap | Memory conflicts |
+| CounterFact | Knowledge editing conflicts |
 
-## Core Python CLI
+<details>
+<summary><b>Repository Structure</b></summary>
 
-### `src/dump_activations_from_testjsonl.py`
+```text
+knowledge_conflict_steering/
+
+├── data/
+├── models/
+├── src/
+├── run/
+├── complex_tasks/
+├── docs/
+└── output/
+```
+
+</details>
+
+<details>
+<summary><b>Detailed Reproduction Instructions</b></summary>
+
+### Activation Extraction
 
 ```bash
-python3 src/dump_activations_from_testjsonl.py \
-  --model llama3-8b-it \
-  --dataset NQ-Swap \
-  --category dev \
-  --input-jsonl data/NQ-Swap/dev.jsonl \
-  --data-split train \
-  --out-root output/dump \
-  --gpu 0 \
-  --batch-size 64 \
-  --save-resid true
+GPU=0 ./run/run_dump_all_datasets.sh
 ```
 
-### `src/run_resid_projection_ablation.py`
+### In-domain Steering
 
 ```bash
-python3 src/run_resid_projection_ablation.py \
-  --eval-mode train_val_test \
-  --model llama3-8b-it \
-  --npz output/dump/llama3-8b-it/NQ-Swap/dev__split_train/resid_hidden_state__stage1_correct_use_wrong_context.npz \
-  --val-json output/dump/llama3-8b-it/NQ-Swap/dev__split_val/internal_aware_data__stage1_correct_use_wrong_context.json \
-  --test-json output/dump/llama3-8b-it/NQ-Swap/dev__split_test/internal_aware_data__stage1_correct_use_wrong_context.json \
-  --out-root output/steer_result \
-  --gpu 0 \
-  --layers 10 \
-  --alpha-start 0 --alpha-end 3 --alpha-step 0.2 \
-  --batch-size 64
+GPU=0 MODEL=llama3-8b-it CATEGORY=dev LAYERS=10 \
+./run/run_resid_projection_ablation.sh
 ```
 
-Steering: `h' = h + α · v`. The sign of α selects `+v` or `−v`. Positive α biases toward parameter answers; negative α toward context answers (consistent with `v = mean(clean) − mean(conflict)`).
+### Cross-domain Experiments
 
----
+Available experiments:
 
-## Output JSON (brief)
+- Cross-format transfer
+- Cross-relation transfer
+- Cross-dataset transfer
 
-Steering result JSON includes:
-
-- `summary_metrics` — internal / external match rates, Stage1/Stage2 pass rates
-- `best_alpha` — α selected on val (`train_val_test` mode)
-- `eval_mode` — `train_val_test` or `legacy`
-
-Path fields prefer **repo-relative** paths (`project_paths.display_path`).
-
----
-
-## Related baseline
-
-The SpARE (SAE-based representation engineering) baseline lives under `baseline/SAE-based-representation-engineering-main/` in the parent project. It uses the same Stage2 manifest protocol; metrics `UseM_*` / `UseC_*` correspond to internal / external.
-
----
+</details>
 
 ## Citation
 
-If you use this pipeline, please cite the relevant steering / knowledge-conflict papers and the original dataset papers.
+If you use this repository, please cite:
+
+```bibtex
+@article{lou2026knowledge,
+  title={Which Knowledge Should LLMs Trust? Uncovering a Generalizable Steering Direction Across Knowledge Conflicts},
+  author={Lou, Yibin and Hu, Yi and Chen, Jianhui and Wang, Chenpeng and Zhang, Muhan and Pan, Liangming},
+  journal={arXiv preprint},
+  year={2026}
+}
+```

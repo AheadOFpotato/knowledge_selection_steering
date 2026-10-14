@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
-# NQ-Swap (dev) train direction → steer on ParaConfilct / macnoise / memotrap / counterfact:
-#   - Direction: <DUMP_ROOT>/<model>/NQ-Swap/dev__split_train/
-#   - Val / test: target dataset category __split_{val,test}/
-#   - counterfact: only six knowledge types (P27 P176 P106 P140 P641 P449)
+# NQ-Swap (dev) full direction → steer on ParaConfilct / macnoise / memotrap / counterfact:
+#   - Direction: full <DUMP_ROOT>/<model>/NQ-Swap/dev/ NPZ
+#   - Eval: target category manifest split 50/50 at steer time (val α / test metrics)
 #
 # Output:
-#   ${STEER_OUT_ROOT}/<model>/<test_dataset>/<test_cat>__split_test__dir_<dir_tag>__test_<test_cat>__split_test/
+#   ${STEER_OUT_ROOT}/<model>/<test_dataset>/<test_cat>__dir_dev__test_<test_cat>/
 #
 # Usage:
 #   ./run/run_resid_projection_nqswap_dir_cross_datasets.sh
@@ -37,8 +36,7 @@ DRY_RUN="${DRY_RUN:-0}"
 KNOWLEDGE_TYPE_IDS=(P27 P176 P106 P140 P641 P449)
 TEST_DATASETS=(ParaConfilct macnoise memotrap counterfact)
 
-DIR_TAG="$(split_train_cat "${DIR_CATEGORY}")"
-DIR_NPZ="$(train_npz_path "${DUMP_ROOT}" "${MODEL}" "${DIR_DATASET}" "${DIR_CATEGORY}")"
+DIR_NPZ="$(dump_npz_path "${DUMP_ROOT}" "${MODEL}" "${DIR_DATASET}" "${DIR_CATEGORY}")"
 
 LAYERS=""
 apply_model_layers_default "${MODEL}"
@@ -57,13 +55,13 @@ cd "${ROOT}" || exit 1
 mkdir -p "${STEER_OUT_ROOT}"
 
 if [[ ! -f "${DIR_NPZ}" ]]; then
-  echo "[error] NQ-Swap train NPZ not found: ${DIR_NPZ}" >&2
+  echo "[error] NQ-Swap direction NPZ not found: ${DIR_NPZ}" >&2
   echo "Run: DATASETS=NQ-Swap ./run/run_dump_all_datasets.sh" >&2
   exit 1
 fi
 
 echo "[cross_dataset] MODEL=${MODEL} LAYERS=${LAYERS} GPU=${GPU}" >&2
-echo "[cross_dataset] direction: ${DIR_DATASET}/${DIR_TAG}" >&2
+echo "[cross_dataset] direction: ${DIR_DATASET}/${DIR_CATEGORY} (full NPZ)" >&2
 echo "[cross_dataset] DIR_NPZ=${DIR_NPZ}" >&2
 echo "[cross_dataset] STEER_OUT_ROOT=${STEER_OUT_ROOT}" >&2
 
@@ -77,20 +75,20 @@ for test_dataset in "${TEST_DATASETS[@]}"; do
 
   echo "[cross_dataset] === test dataset: ${test_dataset} ===" >&2
   shopt -s nullglob
-  for val_dir in "${ds_dir}"/*__split_val/; do
-    [[ -d "${val_dir}" ]] || continue
-    test_cat="$(basename "${val_dir}" __split_val)"
+  for cat_dir in "${ds_dir}"/*/; do
+    [[ -d "${cat_dir}" ]] || continue
+    test_cat="$(basename "${cat_dir}")"
+    [[ "${test_cat}" == *__split_* ]] && continue
 
     if [[ "${test_dataset}" == "counterfact" ]]; then
       counterfact_type_enabled "${test_cat}" || continue
     fi
 
-    val_json="$(val_json_path "${DUMP_ROOT}" "${MODEL}" "${test_dataset}" "${test_cat}")"
-    test_json="$(test_json_path "${DUMP_ROOT}" "${MODEL}" "${test_dataset}" "${test_cat}")"
+    eval_json="$(dump_manifest_path "${DUMP_ROOT}" "${MODEL}" "${test_dataset}" "${test_cat}")"
     run_cross_train_val_test \
       "${MODEL}" "${STEER_OUT_ROOT}" "${test_dataset}" \
-      "${DIR_NPZ}" "${val_json}" "${test_json}" \
-      "${test_cat}" "${DIR_DATASET}__${DIR_TAG}" "${LAYERS}"
+      "${DIR_NPZ}" "${eval_json}" \
+      "${test_cat}" "${DIR_CATEGORY}" "${LAYERS}" "cross_dataset"
     n_jobs=$((n_jobs + 1))
   done
   shopt -u nullglob

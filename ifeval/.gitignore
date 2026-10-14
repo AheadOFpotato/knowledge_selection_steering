@@ -1,0 +1,7 @@
+output/if_eval/**
+!output/if_eval/.gitkeep
+.nltk_data/
+__pycache__/
+npz/**
+!npz/.gitkeep
+!npz/README.md

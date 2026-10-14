@@ -29,9 +29,7 @@ from project_paths import ROOT, STEER_OUT_ROOT
 DEFAULT_DATA_ROOT = STEER_OUT_ROOT
 DEFAULT_OUT_ROOT = ROOT / "output" / "fig" / "layer_analyze"
 DEFAULT_DATASET = "NQ-Swap"
-DEFAULT_CATEGORY = (
-    "dev__split_test__dir_dev__split_train__test_dev__split_test"
-)
+DEFAULT_CATEGORY = "dev__dir_dev__test_dev"
 
 DEFAULT_MODELS = ("llama3-8b-it", "qwen3-8b", "gemma2-9b-it", "yi-6b-chat")
 

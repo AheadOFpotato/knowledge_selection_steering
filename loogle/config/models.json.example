@@ -1,0 +1,8 @@
+{
+  "_comment": "Copy to models.json. Values may be absolute paths or paths relative to loogle/ bundle root. Default layout: ../models/<ModelDir>/",
+  "llama3-8b-it": "../models/Llama3-8b-it",
+  "gemma2-9b-it": "../models/Gemma2-9b-it",
+  "qwen3-8b": "../models/Qwen3-8B",
+  "yi-6b": "../models/Yi-6B",
+  "yi-6b-chat": "../models/Yi-6B-Chat"
+}

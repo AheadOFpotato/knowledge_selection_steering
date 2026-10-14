@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
-# Batch steering: train direction, val alpha, test eval (train_val_test mode).
+# Batch steering: runtime split (same_dataset 70/15/15 per category).
 #
-# Expects dumps under DUMP_ROOT with __split_train / __split_val / __split_test suffixes
-# (see run/run_dump_all_datasets.sh).
+# Expects one combined dump per category under DUMP_ROOT (see run_dump_all_datasets.sh).
 #
 # Usage:
 #   MODEL=llama3-8b-it LAYERS=10 GPU=0 ./run/run_resid_projection_ablation_all_final.sh
@@ -29,11 +28,14 @@ CATEGORIES="${CATEGORIES:-}"
 SKIP_EXISTING="${SKIP_EXISTING:-1}"
 DRY_RUN="${DRY_RUN:-0}"
 
+SPLIT_SEED="${SPLIT_SEED:-42}"
+TRAIN_RATIO="${TRAIN_RATIO:-0.7}"
+VAL_RATIO="${VAL_RATIO:-0.15}"
+
 ALPHA_START="${ALPHA_START:-0.2}"
 ALPHA_END="${ALPHA_END:-3}"
 ALPHA_STEP="${ALPHA_STEP:-0.2}"
 
-# Only these five datasets are supported.
 ALLOWED_DATASETS=(macnoise NQ-Swap ParaConfilct memotrap counterfact)
 DEFAULT_DATASET_ORDER=("${ALLOWED_DATASETS[@]}")
 
@@ -109,7 +111,7 @@ category_enabled() {
 
 out_cat_slug() {
   local base="$1"
-  printf '%s__split_test__dir_%s__split_train__test_%s__split_test' "${base}" "${base}" "${base}"
+  printf '%s__dir_%s__test_%s' "${base}" "${base}" "${base}"
 }
 
 steer_already_done() {
@@ -122,17 +124,16 @@ steer_already_done() {
     && compgen -G "${out_dir}/L${ls_tag}_alpha"*.json >/dev/null 2>&1
 }
 
-run_triplet() {
+run_category() {
   local model="$1"
   local dataset="$2"
   local base_cat="$3"
 
-  local train_npz="${DUMP_ROOT}/${model}/${dataset}/${base_cat}__split_train/resid_hidden_state__${GROUP}.npz"
-  local val_json="${DUMP_ROOT}/${model}/${dataset}/${base_cat}__split_val/internal_aware_data__${GROUP}.json"
-  local test_json="${DUMP_ROOT}/${model}/${dataset}/${base_cat}__split_test/internal_aware_data__${GROUP}.json"
+  local npz="${DUMP_ROOT}/${model}/${dataset}/${base_cat}/resid_hidden_state__${GROUP}.npz"
+  local manifest="${DUMP_ROOT}/${model}/${dataset}/${base_cat}/internal_aware_data__${GROUP}.json"
 
-  if [[ ! -f "${train_npz}" || ! -f "${val_json}" || ! -f "${test_json}" ]]; then
-    echo "[skip] missing train/val/test dumps for ${model}/${dataset}/${base_cat}" >&2
+  if [[ ! -f "${npz}" || ! -f "${manifest}" ]]; then
+    echo "[skip] missing dump for ${model}/${dataset}/${base_cat}" >&2
     return 0
   fi
 
@@ -144,14 +145,17 @@ run_triplet() {
   local -a cmd=(
     python3 "${PY}"
     --eval-mode train_val_test
+    --split-protocol same_dataset
+    --split-seed "${SPLIT_SEED}"
+    --train-ratio "${TRAIN_RATIO}"
+    --val-ratio "${VAL_RATIO}"
     --model "${model}"
-    --npz "${train_npz}"
-    --val-json "${val_json}"
-    --test-json "${test_json}"
+    --npz "${npz}"
+    --test-json "${manifest}"
     --out-root "${STEER_OUT_ROOT}"
-    --output-category "${base_cat}__split_test"
-    --direction-category-tag "${base_cat}__split_train"
-    --test-category-tag "${base_cat}__split_test"
+    --output-category "${base_cat}"
+    --direction-category-tag "${base_cat}"
+    --test-category-tag "${base_cat}"
     --gpu "${GPU}"
     --layers "${LAYERS}"
     --alpha-start "${ALPHA_START}"
@@ -163,7 +167,7 @@ run_triplet() {
     --stage1-min-pass-rate -1
   )
 
-  echo "[run] ${model} | ${dataset} | ${base_cat} (train→dir, val→α, test→eval)" >&2
+  echo "[run] ${model} | ${dataset} | ${base_cat} (runtime 70/15/15)" >&2
   if [[ "${DRY_RUN}" == "1" ]]; then
     printf '  '; printf '%q ' "${cmd[@]}"; echo >&2
     return 0
@@ -193,18 +197,16 @@ for model in "${MODEL_LIST[@]}"; do
     ds_dir="${model_dir}/${dataset}"
     [[ -d "${ds_dir}" ]] || continue
 
-    declare -A seen_base=()
     shopt -s nullglob
-    for train_dir in "${ds_dir}"/*__split_train/; do
-      [[ -d "${train_dir}" ]] || continue
-      base_cat="$(basename "${train_dir}" __split_train)"
+    for cat_dir in "${ds_dir}"/*/; do
+      [[ -d "${cat_dir}" ]] || continue
+      base_cat="$(basename "${cat_dir}")"
+      [[ "${base_cat}" == _runtime_split ]] && continue
+      [[ "${base_cat}" == *__split_* ]] && continue
       category_enabled "${base_cat}" || continue
-      [[ -n "${seen_base[$base_cat]+x}" ]] && continue
-      seen_base["$base_cat"]=1
-      run_triplet "${model}" "${dataset}" "${base_cat}"
+      run_category "${model}" "${dataset}" "${base_cat}"
     done
     shopt -u nullglob
-    unset seen_base
   done
 done
 

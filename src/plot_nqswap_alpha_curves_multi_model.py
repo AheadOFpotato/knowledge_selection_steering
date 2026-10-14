@@ -47,11 +47,10 @@ DEFAULT_LAYER_BY_MODEL: dict[str, str] = {
     "qwen3-8b": "21",
     "gemma2-9b-it": "16",
     "yi-6b-chat": "13",
-    "mistral-7b-v0.1": "16",
 }
 
 NQSWAP_DATASET = "NQ-Swap"
-NQSWAP_CATEGORY = "dev__split_test__dir_dev__split_train__test_dev__split_test"
+NQSWAP_CATEGORY = "dev__dir_dev__test_dev"
 
 MACNOISE_DATASET = "macnoise"
 def _resolve_model(model: str) -> str:

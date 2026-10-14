@@ -1,0 +1,5 @@
+{
+  "_comment": "Local weights ONLY under repo-root models/. Do not use Hugging Face hub ids — nothing is downloaded.",
+  "llama3-8b-it": "../models/Llama3-8b-it",
+  "qwen3-8b": "../models/Qwen3-8B"
+}

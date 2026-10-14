@@ -8,50 +8,29 @@ unset _RUN_SCRIPTS
 
 PY="${PY:-${ROOT}/src/run_resid_projection_ablation.py}"
 GROUP="${GROUP:-stage1_correct_use_wrong_context}"
+SPLIT_SEED="${SPLIT_SEED:-42}"
 
 safe_slug() {
   printf '%s' "${1// /_}"
 }
 
-split_train_cat() {
-  printf '%s__split_train' "$1"
-}
-
-split_val_cat() {
-  printf '%s__split_val' "$1"
-}
-
-split_test_cat() {
-  printf '%s__split_test' "$1"
-}
-
-train_npz_path() {
+dump_npz_path() {
   local root="$1" model="$2" dataset="$3" category="$4"
   printf '%s/%s/%s/%s/resid_hidden_state__%s.npz' \
-    "${root}" "${model}" "${dataset}" "$(split_train_cat "${category}")" "${GROUP}"
+    "${root}" "${model}" "${dataset}" "${category}" "${GROUP}"
 }
 
-val_json_path() {
+dump_manifest_path() {
   local root="$1" model="$2" dataset="$3" category="$4"
   printf '%s/%s/%s/%s/internal_aware_data__%s.json' \
-    "${root}" "${model}" "${dataset}" "$(split_val_cat "${category}")" "${GROUP}"
+    "${root}" "${model}" "${dataset}" "${category}" "${GROUP}"
 }
 
-test_json_path() {
-  local root="$1" model="$2" dataset="$3" category="$4"
-  printf '%s/%s/%s/%s/internal_aware_data__%s.json' \
-    "${root}" "${model}" "${dataset}" "$(split_test_cat "${category}")" "${GROUP}"
-}
-
-# Matches run_resid_projection_ablation._steer_out_path slugging for train_val_test tags.
 cross_steer_out_dir() {
-  local steer_root="$1" model="$2" dataset="$3" test_cat="$4" dir_tag="$5"
-  local ts ds tt
-  ts="$(safe_slug "$(split_test_cat "${test_cat}")")"
-  ds="$(safe_slug "${dir_tag}")"
-  tt="$(safe_slug "$(split_test_cat "${test_cat}")")"
+  local steer_root="$1" model="$2" dataset="$3" test_cat="$4" dir_cat="$5"
   printf '%s/%s/%s/%s__dir_%s__test_%s' \
-    "${steer_root}" "${model}" "${dataset}" "${ts}" "${ds}" "${tt}"
+    "${steer_root}" "${model}" "${dataset}" \
+    "$(safe_slug "${test_cat}")" "$(safe_slug "${dir_cat}")" "$(safe_slug "${test_cat}")"
 }
 
 cross_steer_already_done() {
@@ -68,7 +47,6 @@ apply_model_layers_default() {
     qwen3-8b) LAYERS="${LAYERS:-21}" ;;
     gemma2-9b-it) LAYERS="${LAYERS:-16}" ;;
     yi-6b|yi-6b-chat) LAYERS="${LAYERS:-13}" ;;
-    mistral-7b-v0.1) LAYERS="${LAYERS:-16}" ;;
     *) LAYERS="${LAYERS:-16}" ;;
   esac
 }
@@ -78,43 +56,40 @@ run_cross_train_val_test() {
   local steer_out_root="$2"
   local dataset="$3"
   local dir_npz="$4"
-  local val_json="$5"
-  local test_json="$6"
-  local test_cat="$7"
-  local dir_tag="$8"
-  local layers="$9"
+  local eval_json="$5"
+  local test_cat="$6"
+  local dir_cat="$7"
+  local layers="$8"
+  local split_protocol="${9:-cross_dataset}"
 
   local out_dir
-  out_dir="$(cross_steer_out_dir "${steer_out_root}" "${model}" "${dataset}" "${test_cat}" "${dir_tag}")"
+  out_dir="$(cross_steer_out_dir "${steer_out_root}" "${model}" "${dataset}" "${test_cat}" "${dir_cat}")"
 
   if [[ "${SKIP_EXISTING:-1}" == "1" ]] && cross_steer_already_done "${out_dir}" "${layers}"; then
     echo "[skip] done: ${out_dir}" >&2
     return 0
   fi
   if [[ ! -f "${dir_npz}" ]]; then
-    echo "[skip] missing train NPZ: ${dir_npz}" >&2
+    echo "[skip] missing direction NPZ: ${dir_npz}" >&2
     return 0
   fi
-  if [[ ! -f "${val_json}" ]]; then
-    echo "[skip] missing val JSON: ${val_json}" >&2
-    return 0
-  fi
-  if [[ ! -f "${test_json}" ]]; then
-    echo "[skip] missing test JSON: ${test_json}" >&2
+  if [[ ! -f "${eval_json}" ]]; then
+    echo "[skip] missing eval manifest: ${eval_json}" >&2
     return 0
   fi
 
   local -a cmd=(
     python3 "${PY}"
     --eval-mode train_val_test
+    --split-protocol "${split_protocol}"
+    --split-seed "${SPLIT_SEED}"
     --model "${model}"
     --npz "${dir_npz}"
-    --val-json "${val_json}"
-    --test-json "${test_json}"
+    --test-json "${eval_json}"
     --out-root "${steer_out_root}"
-    --output-category "$(split_test_cat "${test_cat}")"
-    --direction-category-tag "${dir_tag}"
-    --test-category-tag "$(split_test_cat "${test_cat}")"
+    --output-category "${test_cat}"
+    --direction-category-tag "${dir_cat}"
+    --test-category-tag "${test_cat}"
     --gpu "${GPU}"
     --layers "${layers}"
     --alpha-start "${ALPHA_START}"
@@ -126,13 +101,13 @@ run_cross_train_val_test() {
     --stage1-min-pass-rate -1
   )
 
-  echo "[run] dir_tag=${dir_tag} -> test=${test_cat} | alpha ${ALPHA_START}..${ALPHA_END}" >&2
+  echo "[run] dir=${dir_cat} -> test=${test_cat} | protocol=${split_protocol} | alpha ${ALPHA_START}..${ALPHA_END}" >&2
   if [[ "${DRY_RUN:-0}" == "1" ]]; then
     printf '  '; printf '%q ' "${cmd[@]}"; echo >&2
     return 0
   fi
   if ! "${cmd[@]}"; then
-    echo "[error] failed: dataset=${dataset} dir=${dir_tag} test=${test_cat}" >&2
+    echo "[error] failed: dataset=${dataset} dir=${dir_cat} test=${test_cat}" >&2
     return 1
   fi
 }

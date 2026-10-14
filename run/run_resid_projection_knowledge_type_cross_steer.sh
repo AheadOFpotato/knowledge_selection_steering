@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 # CounterFact six knowledge types (P27 P176 P106 P140 P641 P449) cross steering 6×6:
-#   - Direction: <DUMP_ROOT>/<model>/counterfact/<dir_category>__split_train/
-#   - Val / test: same dataset, test category splits
-#   - train → direction, val → alpha, test → metrics
+#   - Direction: full counterfact/<dir_category>/ NPZ
+#   - Eval: same or other category manifest; runtime split:
+#       dir_cat == test_cat → same_dataset 70/15/15
+#       dir_cat != test_cat → cross_dataset 50/50 on eval manifest
 #
 # Output:
-#   ${STEER_OUT_ROOT}/<model>/counterfact/<test>__split_test__dir_<dir>__split_train__test_<test>__split_test/
+#   ${STEER_OUT_ROOT}/<model>/counterfact/<test>__dir_<dir>__test_<test>/
 #
 # Usage:
 #   ./run/run_resid_projection_knowledge_type_cross_steer.sh
@@ -44,9 +45,10 @@ resolve_category_for_type() {
   ds_dir="${DUMP_ROOT}/${model}/${DATASET}"
   [[ -d "${ds_dir}" ]] || return 1
   local name
-  for name in "${ds_dir}"/*__split_train/; do
+  for name in "${ds_dir}"/*/; do
     [[ -d "${name}" ]] || continue
-    name="$(basename "${name}" __split_train)"
+    name="$(basename "${name}")"
+    [[ "${name}" == *__split_* ]] && continue
     if [[ "${name,,}" == *"${tag}"* ]]; then
       printf '%s' "${name}"
       return 0
@@ -70,7 +72,7 @@ for pid in "${KNOWLEDGE_TYPE_IDS[@]}"; do
     CATEGORY_LIST+=("${cat_slug}")
     echo "[resolve] knowledge_type ${pid} -> ${cat_slug}" >&2
   else
-    echo "[warn] ${pid}: no __split_train category under ${DUMP_ROOT}/${MODEL}/${DATASET}" >&2
+    echo "[warn] ${pid}: no category under ${DUMP_ROOT}/${MODEL}/${DATASET}" >&2
   fi
 done
 
@@ -84,16 +86,18 @@ echo "[knowledge_type] jobs=$(( ${#CATEGORY_LIST[@]} * ${#CATEGORY_LIST[@]} ))" 
 echo "[knowledge_type] DUMP_ROOT=${DUMP_ROOT} STEER_OUT_ROOT=${STEER_OUT_ROOT}" >&2
 
 for dir_cat in "${CATEGORY_LIST[@]}"; do
-  dir_npz="$(train_npz_path "${DUMP_ROOT}" "${MODEL}" "${DATASET}" "${dir_cat}")"
-  dir_tag="$(split_train_cat "${dir_cat}")"
+  dir_npz="$(dump_npz_path "${DUMP_ROOT}" "${MODEL}" "${DATASET}" "${dir_cat}")"
   echo "[knowledge_type] === direction from ${dir_cat} ===" >&2
   for test_cat in "${CATEGORY_LIST[@]}"; do
-    val_json="$(val_json_path "${DUMP_ROOT}" "${MODEL}" "${DATASET}" "${test_cat}")"
-    test_json="$(test_json_path "${DUMP_ROOT}" "${MODEL}" "${DATASET}" "${test_cat}")"
+    eval_json="$(dump_manifest_path "${DUMP_ROOT}" "${MODEL}" "${DATASET}" "${test_cat}")"
+    split_protocol="cross_dataset"
+    if [[ "${dir_cat}" == "${test_cat}" ]]; then
+      split_protocol="same_dataset"
+    fi
     run_cross_train_val_test \
       "${MODEL}" "${STEER_OUT_ROOT}" "${DATASET}" \
-      "${dir_npz}" "${val_json}" "${test_json}" \
-      "${test_cat}" "${dir_tag}" "${LAYERS}"
+      "${dir_npz}" "${eval_json}" \
+      "${test_cat}" "${dir_cat}" "${LAYERS}" "${split_protocol}"
   done
 done
 

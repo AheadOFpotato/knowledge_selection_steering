@@ -11,14 +11,17 @@ Output paths include ``__dir_<direction_category>`` / ``__test_<test_category>``
 
 **eval-mode=legacy:** For each alpha, rerun Stage1+Stage2 on ``--test-json`` (same as before).
 
-**eval-mode=train_val_test:** ``--npz`` = train dump (direction only); sweep alphas on ``--val-json``;
-pick best alpha by val stage2 correct rate; evaluate once on ``--test-json``.
+**eval-mode=train_val_test:** ``--npz`` = full dump (direction); ``--test-json`` = full eval manifest.
+Runtime split via ``--split-protocol``:
+``same_dataset`` → 70/15/15 on manifest/NPZ indices; ``cross_dataset`` → direction from
+full NPZ, eval manifest split 50/50 (val/test) by default.
 
 Labels match ``dump_activations_from_testjsonl.py``.
 """
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import random
@@ -32,14 +35,18 @@ import torch
 from transformers import AutoConfig, AutoModelForCausalLM, AutoTokenizer
 
 from project_paths import ROOT, STEER_OUT_ROOT, display_path, resolve_model_path
+from data_split import (
+    split_indices_eval_val_test,
+    split_indices_train_val_test,
+    write_manifest_slice,
+)
 
 DEFAULT_STEER_OUT_DIR = STEER_OUT_ROOT
 
 MODEL_PATHS: dict[str, str] = {
-    "llama3-8b-it": "Llama3-8b-it",
+    "llama3-8b-it": "Meta-Llama-3.1-8B-Instruct",
     "gemma2-9b-it": "Gemma2-9b-it",
     "qwen3-8b": "Qwen3-8B",
-    "mistral-7b-v0.1": "Mistral-7B-v0.1",
     "yi-6b": "Yi-6B",
     "yi-6b-chat": "Yi-6B-Chat",
 }
@@ -263,7 +270,11 @@ def mean_vector(vectors: list[np.ndarray]) -> np.ndarray | None:
     return np.mean(np.stack(arrs, axis=0), axis=0).astype(np.float64)
 
 
-def _load_resid_vectors(activations_npz: Path, layers: list[int]) -> dict[int, tuple[np.ndarray, np.ndarray]]:
+def _load_resid_vectors(
+    activations_npz: Path,
+    layers: list[int],
+    indices: list[int] | None = None,
+) -> dict[int, tuple[np.ndarray, np.ndarray]]:
     """Per-layer mean of last-token resid for clean vs conflict (same NPZ layout as analyze_angle)."""
     z = np.load(activations_npz, allow_pickle=True)
     rc = z["resid_act_clean"]
@@ -278,14 +289,19 @@ def _load_resid_vectors(activations_npz: Path, layers: list[int]) -> dict[int, t
             f"Available keys: {z.files}"
         )
     z.close()
+    row_idx = list(indices) if indices is not None else list(range(len(rc)))
     out: dict[int, tuple[np.ndarray, np.ndarray]] = {}
     for li in layers:
         vc, vw = [], []
-        for i in range(len(rc)):
+        for i in row_idx:
+            if i < 0 or i >= len(rc):
+                continue
             a = np.asarray(rc[i], dtype=np.float64)
             if a.ndim == 2 and li < a.shape[0]:
                 vc.append(a[li])
-        for i in range(len(rw)):
+        for i in row_idx:
+            if i < 0 or i >= len(rw):
+                continue
             a = np.asarray(rw[i], dtype=np.float64)
             if a.ndim == 2 and li < a.shape[0]:
                 vw.append(a[li])
@@ -859,14 +875,30 @@ def main() -> None:
         "--eval-mode",
         choices=("legacy", "train_val_test"),
         default="legacy",
-        help="legacy: sweep alphas on --test-json. train_val_test: direction from train NPZ, "
-        "alpha grid on --val-json, final eval on --test-json.",
+        help="legacy: sweep alphas on --test-json. train_val_test: runtime split; direction from "
+        "NPZ (train subset or full), alpha grid on val, final eval on test.",
+    )
+    ap.add_argument(
+        "--split-protocol",
+        choices=("same_dataset", "cross_dataset"),
+        default="same_dataset",
+        help="same_dataset: 70/15/15 on --test-json rows (direction from train indices). "
+        "cross_dataset: full --npz for direction; split eval manifest val/test at use time.",
+    )
+    ap.add_argument("--split-seed", type=int, default=42, help="RNG seed for runtime splits.")
+    ap.add_argument("--train-ratio", type=float, default=0.7, help="Train fraction (same_dataset).")
+    ap.add_argument("--val-ratio", type=float, default=0.15, help="Val fraction (same_dataset).")
+    ap.add_argument(
+        "--cross-val-ratio",
+        type=float,
+        default=0.5,
+        help="Val fraction when split-protocol=cross_dataset (default 50%% for alpha grid).",
     )
     ap.add_argument(
         "--val-json",
         type=Path,
         default=None,
-        help="Validation manifest (train_val_test mode). Required when --eval-mode=train_val_test.",
+        help="Deprecated: pre-split val manifest. Omit; splits are computed at runtime from --test-json.",
     )
     args = ap.parse_args()
     out_root = _abspath(args.out_root)
@@ -906,12 +938,15 @@ def main() -> None:
         raise SystemExit(f"direction activations not found: {direction_npz}")
 
     eval_mode = str(args.eval_mode).strip()
-    val_manifest: Path | None = _abspath(args.val_json) if args.val_json is not None else None
+    split_protocol = str(args.split_protocol).strip()
     if eval_mode == "train_val_test":
-        if val_manifest is None or not val_manifest.is_file():
-            raise SystemExit("train_val_test mode requires --val-json (validation manifest)")
         if not test_manifest.is_file():
-            raise SystemExit("train_val_test mode requires --test-json (test manifest)")
+            raise SystemExit(f"train_val_test mode requires --test-json (full eval manifest): {test_manifest}")
+        if args.val_json is not None:
+            print(
+                "[warn] --val-json is ignored; val/test splits are computed at runtime from --test-json",
+                flush=True,
+            )
     elif not test_manifest.is_file():
         raise SystemExit(f"test manifest not found: {test_manifest}")
 
@@ -920,7 +955,61 @@ def main() -> None:
     alphas = _alphas_from_cli(args.alpha_start, args.alpha_end, args.alpha_step)
 
     layers = [int(x.strip()) for x in str(args.layers).split(",") if x.strip()]
-    dirs = _load_resid_vectors(direction_npz, layers)
+
+    direction_indices: list[int] | None = None
+    val_manifest: Path | None = None
+    runtime_split_dir: Path | None = None
+
+    if eval_mode == "train_val_test":
+        full_obj, full_samples = _load_manifest(test_manifest)
+        n_full = len(full_samples)
+        split_seed = int(args.split_seed)
+        if split_protocol == "same_dataset":
+            train_i, val_i, test_i = split_indices_train_val_test(
+                n_full,
+                train_ratio=float(args.train_ratio),
+                val_ratio=float(args.val_ratio),
+                seed=split_seed,
+            )
+            direction_indices = train_i
+            print(
+                f"[train_val_test] same_dataset split n={n_full} "
+                f"train={len(train_i)} val={len(val_i)} test={len(test_i)} "
+                f"(seed={split_seed}, train_ratio={args.train_ratio}, val_ratio={args.val_ratio})",
+                flush=True,
+            )
+        elif split_protocol == "cross_dataset":
+            val_i, test_i = split_indices_eval_val_test(
+                n_full,
+                val_ratio=float(args.cross_val_ratio),
+                seed=split_seed,
+            )
+            direction_indices = None
+            print(
+                f"[train_val_test] cross_dataset eval split n={n_full} "
+                f"val={len(val_i)} test={len(test_i)} "
+                f"(seed={split_seed}, cross_val_ratio={args.cross_val_ratio}); direction from full NPZ",
+                flush=True,
+            )
+        else:
+            raise SystemExit(f"unknown split-protocol: {split_protocol}")
+
+        # Parallel cross-dataset jobs often use manifests with the same basename
+        # (e.g. ``internal_aware_data__...json``).  Keying only by that stem lets
+        # unrelated categories overwrite each other's val/test split during a run.
+        manifest_key = hashlib.sha256(
+            str(test_manifest.resolve()).encode("utf-8")
+        ).hexdigest()[:16]
+        runtime_split_dir = out_root / "_runtime_split" / manifest_key
+        runtime_split_dir.mkdir(parents=True, exist_ok=True)
+        val_manifest = write_manifest_slice(
+            full_obj, val_i, runtime_split_dir / f"val_{split_protocol}.json", split_name="val"
+        )
+        test_manifest = write_manifest_slice(
+            full_obj, test_i, runtime_split_dir / f"test_{split_protocol}.json", split_name="test"
+        )
+
+    dirs = _load_resid_vectors(direction_npz, layers, direction_indices)
     used_layers = [li for li in layers if li in dirs]
     if not used_layers:
         raise SystemExit("no valid layers from direction activations NPZ")
@@ -1129,12 +1218,15 @@ def main() -> None:
 
     if eval_mode == "train_val_test":
         assert val_manifest is not None
+        dir_label = "train subset" if direction_indices is not None else "full"
         print(
-            f"[train_val_test] direction NPZ (train): {_display_path(direction_npz)}",
+            f"[train_val_test] direction NPZ ({dir_label}): {_display_path(direction_npz)}",
             flush=True,
         )
         print(f"[train_val_test] alpha grid on val: {_display_path(val_manifest)}", flush=True)
         print(f"[train_val_test] final test: {_display_path(test_manifest)}", flush=True)
+        if runtime_split_dir is not None:
+            print(f"[train_val_test] runtime split cache: {_display_path(runtime_split_dir)}", flush=True)
 
         val_grid_path = _val_grid_out_path(
             out_root,
@@ -1170,7 +1262,11 @@ def main() -> None:
         best_alpha = _pick_best_alpha(alpha_scores)
         val_grid_doc = {
             "eval_mode": "train_val_test",
+            "split_protocol": split_protocol,
+            "split_seed": int(args.split_seed),
             "direction_npz": _display_path(direction_npz),
+            "direction_npz_indices": direction_indices,
+            "eval_manifest_full": _display_path(_abspath(args.test_json)) if args.test_json else None,
             "val_json": _display_path(val_manifest),
             "test_json": _display_path(test_manifest),
             "best_alpha": best_alpha,
@@ -1179,6 +1275,11 @@ def main() -> None:
             "model": args.model,
             "layers": str(args.layers),
         }
+        if split_protocol == "same_dataset":
+            val_grid_doc["train_ratio"] = float(args.train_ratio)
+            val_grid_doc["val_ratio"] = float(args.val_ratio)
+        else:
+            val_grid_doc["cross_val_ratio"] = float(args.cross_val_ratio)
         val_grid_path.write_text(
             json.dumps(val_grid_doc, ensure_ascii=False, indent=2), encoding="utf-8"
         )

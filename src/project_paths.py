@@ -14,7 +14,8 @@ def _env_path(name: str, default: Path) -> Path:
 
 DATA_ROOT = _env_path("DATA_ROOT", ROOT / "data")
 DUMP_ROOT = _env_path("DUMP_ROOT", ROOT / "output" / "dump")
-MODEL_ROOT = _env_path("MODEL_ROOT", ROOT / "models")
+_default_model_root = ROOT / "models"
+MODEL_ROOT = _env_path("MODEL_ROOT", _default_model_root)
 
 STEER_OUT_ROOT = _env_path("STEER_OUT_ROOT", ROOT / "output" / "steer_result")
 CROSS_FORMAT_DUMP_ROOT = _env_path("CROSS_FORMAT_DUMP_ROOT", DUMP_ROOT / "cross_format")
@@ -28,10 +29,11 @@ CROSS_DATASET_STEER_ROOT = _env_path(
 
 # Subdir names under MODEL_ROOT (not absolute paths).
 MODEL_DIR_NAMES: dict[str, str] = {
-    "llama3-8b-it": "Llama3-8b-it",
+    "llama3-8b-it": "Meta-Llama-3.1-8B-Instruct",
+    "llama3.1-8b-it": "Meta-Llama-3.1-8B-Instruct",
     "gemma2-9b-it": "Gemma2-9b-it",
     "qwen3-8b": "Qwen3-8B",
-    "mistral-7b-v0.1": "Mistral-7B-v0.1",
+    "mistral-7b-instruct-v0.3": "Mistral-7B-Instruct-v0.3",
     "yi-6b": "Yi-6B",
     "yi-6b-chat": "Yi-6B-Chat",
 }

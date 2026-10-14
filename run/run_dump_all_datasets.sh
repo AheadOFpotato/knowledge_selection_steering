@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # Batch dump: resid_hidden_state__*.npz + internal_aware_data__*.json
 # Datasets: macnoise, NQ-Swap, ParaConfilct, memotrap, counterfact only.
-# Train/val/test splits via --data-split (see src/dump_activations_from_testjsonl.py).
+# One combined dump per category (no train/val/test split at dump time).
 #
 # Usage:
 #   ./run/run_dump_all_datasets.sh
 #   MODELS=llama3-8b-it GPU=0 ./run/run_dump_all_datasets.sh
-#   DATASETS=NQ-Swap,counterfact SPLITS=train,val DRY_RUN=1 ./run/run_dump_all_datasets.sh
+#   DATASETS=NQ-Swap,counterfact DRY_RUN=1 ./run/run_dump_all_datasets.sh
 
 set -u
 
@@ -23,10 +23,6 @@ BATCH_SIZE="${BATCH_SIZE:-64}"
 MAX_SAMPLES="${MAX_SAMPLES:-50000}"
 SAVE_RESID="${SAVE_RESID:-true}"
 DATASETS="${DATASETS:-}"
-SPLITS="${SPLITS:-train,val,test}"
-SPLIT_SEED="${SPLIT_SEED:-42}"
-TRAIN_RATIO="${TRAIN_RATIO:-0.7}"
-VAL_RATIO="${VAL_RATIO:-0.15}"
 SKIP_EXISTING="${SKIP_EXISTING:-1}"
 DRY_RUN="${DRY_RUN:-0}"
 
@@ -49,7 +45,6 @@ COUNTERFACT_RELATION_IDS=(P27 P176 P106 P140 P641 P449)
 ALLOWED_DATASETS=(macnoise NQ-Swap ParaConfilct memotrap counterfact)
 
 IFS=',' read -r -a MODEL_LIST <<< "${MODELS}"
-IFS=',' read -r -a SPLIT_LIST <<< "${SPLITS}"
 
 dataset_known() {
   local ds="$1" a
@@ -104,12 +99,7 @@ out_dir_for() {
   local model="$1"
   local dataset="$2"
   local category="$3"
-  local split="$4"
-  local cat_out="${category}"
-  if [[ -n "${split}" && "${split}" != "none" ]]; then
-    cat_out="${category}__split_${split}"
-  fi
-  printf '%s/%s/%s/%s' "${OUT_ROOT}" "${model}" "${dataset}" "${cat_out}"
+  printf '%s/%s/%s/%s' "${OUT_ROOT}" "${model}" "${dataset}" "${category}"
 }
 
 already_dumped() {
@@ -122,14 +112,13 @@ run_dump() {
   local model="$1"
   local dataset="$2"
   local category="$3"
-  local split="$4"
-  local input_jsonl="${5:-}"
+  local input_jsonl="${4:-}"
 
   local out_dir
-  out_dir="$(out_dir_for "${model}" "${dataset}" "${category}" "${split}")"
+  out_dir="$(out_dir_for "${model}" "${dataset}" "${category}")"
 
   if [[ "${SKIP_EXISTING}" == "1" ]] && already_dumped "${out_dir}"; then
-    echo "[skip] ${model} ${dataset} ${category} split=${split} (${out_dir})" >&2
+    echo "[skip] ${model} ${dataset} ${category} (${out_dir})" >&2
     return 0
   fi
 
@@ -143,36 +132,17 @@ run_dump() {
     --batch-size "${BATCH_SIZE}"
     --max-samples "${MAX_SAMPLES}"
     --save-resid "${SAVE_RESID}"
-    --split-seed "${SPLIT_SEED}"
-    --train-ratio "${TRAIN_RATIO}"
-    --val-ratio "${VAL_RATIO}"
   )
-  if [[ -n "${split}" && "${split}" != "none" ]]; then
-    cmd+=(--data-split "${split}")
-  fi
   if [[ -n "${input_jsonl}" ]]; then
     cmd+=(--input-jsonl "${input_jsonl}")
   fi
 
-  echo "[run] ${model} | ${dataset} | ${category} | split=${split}" >&2
+  echo "[run] ${model} | ${dataset} | ${category}" >&2
   if [[ "${DRY_RUN}" == "1" ]]; then
     printf '  '; printf '%q ' "${cmd[@]}"; echo >&2
     return 0
   fi
   "${cmd[@]}"
-}
-
-run_all_splits() {
-  local model="$1"
-  local dataset="$2"
-  local category="$3"
-  local input_jsonl="${4:-}"
-  local sp
-  for sp in "${SPLIT_LIST[@]}"; do
-    sp="${sp// /}"
-    [[ -z "${sp}" ]] && continue
-    run_dump "${model}" "${dataset}" "${category}" "${sp}" "${input_jsonl}"
-  done
 }
 
 cd "${ROOT}" || exit 1
@@ -184,7 +154,7 @@ if [[ ! -f "${PY}" ]]; then
 fi
 
 echo "[run_dump_all_datasets] ROOT=${ROOT} OUT_ROOT=${OUT_ROOT}" >&2
-echo "[run_dump_all_datasets] SPLITS=${SPLITS} seed=${SPLIT_SEED} train=${TRAIN_RATIO} val=${VAL_RATIO}" >&2
+echo "[run_dump_all_datasets] one combined dump per category (splits at steer time)" >&2
 echo "[run_dump_all_datasets] NQ-Swap: ${NQ_SWAP_JSONL} (category=${NQ_SWAP_CATEGORY})" >&2
 
 for model in "${MODEL_LIST[@]}"; do
@@ -195,7 +165,7 @@ for model in "${MODEL_LIST[@]}"; do
     shopt -s nullglob
     for f in "${DATA_ROOT}/macnoise"/*.json; do
       cat="$(basename "${f}" .json)"
-      run_all_splits "${model}" macnoise "${cat}"
+      run_dump "${model}" macnoise "${cat}"
     done
     shopt -u nullglob
   fi
@@ -204,14 +174,14 @@ for model in "${MODEL_LIST[@]}"; do
     shopt -s nullglob
     for f in "${DATA_ROOT}/memotrap"/*.csv; do
       cat="$(basename "${f}" .csv)"
-      run_all_splits "${model}" memotrap "${cat}"
+      run_dump "${model}" memotrap "${cat}"
     done
     shopt -u nullglob
   fi
 
   if dataset_enabled ParaConfilct; then
     for cat in "${PARACONFLICT_CATEGORIES[@]}"; do
-      run_all_splits "${model}" ParaConfilct "${cat}"
+      run_dump "${model}" ParaConfilct "${cat}"
     done
   fi
 
@@ -222,7 +192,7 @@ for model in "${MODEL_LIST[@]}"; do
       [[ "${base}" == *manifest* ]] && continue
       cat="$(basename "${f}" .json)"
       counterfact_category_enabled "${cat}" || continue
-      run_all_splits "${model}" counterfact "${cat}"
+      run_dump "${model}" counterfact "${cat}"
     done
     shopt -u nullglob
   fi
@@ -232,7 +202,7 @@ for model in "${MODEL_LIST[@]}"; do
       echo "[error] NQ-Swap dev.jsonl not found: ${NQ_SWAP_JSONL}" >&2
       exit 1
     fi
-    run_all_splits "${model}" NQ-Swap "${NQ_SWAP_CATEGORY}" "${NQ_SWAP_JSONL}"
+    run_dump "${model}" NQ-Swap "${NQ_SWAP_CATEGORY}" "${NQ_SWAP_JSONL}"
   fi
 done
 

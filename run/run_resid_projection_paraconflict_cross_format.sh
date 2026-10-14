@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 # ParaConflict 6×6 cross-format steering (substitution direction × coherent test):
-#   - Direction (train NPZ): cross_format/<model>/ParaConfilct/<dir_category>__split_train/
-#   - Val / test manifest:   <DUMP_ROOT>/<test_model>/ParaConfilct/<test_category>__split_{val,test}/
-#   - train → direction, val → alpha, test → metrics
+#   - Direction: full cross_format/<model>/ParaConfilct/<dir_category>/ NPZ
+#   - Eval: coherent <DUMP_ROOT>/<test_model>/ParaConfilct/<test_category>/ manifest, 50/50 split
 #
 # Output:
-#   ${STEER_OUT_ROOT}/<model>/ParaConfilct/<test>__split_test__dir_<dir>__split_train__test_<test>__split_test/
+#   ${STEER_OUT_ROOT}/<model>/ParaConfilct/<test>__dir_<dir>__test_<test>/
 #
 # Usage:
 #   ./run/run_resid_projection_paraconflict_cross_format.sh
@@ -72,16 +71,14 @@ for model in "${MODEL_LIST[@]}"; do
   echo "[cross_format] === ${model} LAYERS=${LAYERS} manifest@${test_model} jobs=$(( n_cat * n_cat )) ===" >&2
 
   for dir_cat in "${PARACONFLICT_CATEGORIES[@]}"; do
-    dir_npz="$(train_npz_path "${DIRECTION_ROOT}" "${model}" "${DATASET}" "${dir_cat}")"
-    dir_tag="$(split_train_cat "${dir_cat}")"
-    echo "[cross_format] --- direction ${dir_cat} (${dir_tag}) ---" >&2
+    dir_npz="$(dump_npz_path "${DIRECTION_ROOT}" "${model}" "${DATASET}" "${dir_cat}")"
+    echo "[cross_format] --- direction ${dir_cat} ---" >&2
     for test_cat in "${PARACONFLICT_CATEGORIES[@]}"; do
-      val_json="$(val_json_path "${DUMP_ROOT}" "${test_model}" "${DATASET}" "${test_cat}")"
-      test_json="$(test_json_path "${DUMP_ROOT}" "${test_model}" "${DATASET}" "${test_cat}")"
+      eval_json="$(dump_manifest_path "${DUMP_ROOT}" "${test_model}" "${DATASET}" "${test_cat}")"
       run_cross_train_val_test \
         "${model}" "${STEER_OUT_ROOT}" "${DATASET}" \
-        "${dir_npz}" "${val_json}" "${test_json}" \
-        "${test_cat}" "${dir_tag}" "${LAYERS}"
+        "${dir_npz}" "${eval_json}" \
+        "${test_cat}" "${dir_cat}" "${LAYERS}" "cross_dataset"
     done
   done
 done
